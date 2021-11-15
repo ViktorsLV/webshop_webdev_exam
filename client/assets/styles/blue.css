@@ -1,0 +1,19 @@
+/* variables */
+/* for switching themes */
+:root {
+    --main-color: #041420;
+    --secondary-color: #101e2a;
+
+    --border-color: #0b4b54;
+
+    --main-text: #fff;
+    --secondary-text: #eeeeee;
+
+    --theme-border: #fff;
+    --preview-bg: rgb(25, 39, 52, 0.8);
+    --preview-shadow: #0d2c4c;
+
+    --btn-color: #0d2c4c;
+    --btn-hover: #174573;
+    --highlight: #17a2b8;
+}

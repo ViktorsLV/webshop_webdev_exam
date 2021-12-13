@@ -15,7 +15,7 @@ let orderSchema = new mongoose.Schema(
       qty: {type: Number, required: true},
       image: {type: String, required: true},
       price: {type: Number, required: true},
-      product: {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Product'},
+      product: {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Product'}, // reference product model
     }],
     shippingAddress: {
       address: {type: String, required: true},
@@ -27,17 +27,7 @@ let orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    paymentResult: {
-      id: {type: String},
-      status: {type: String},
-      update_time: {type: String},
-      email_address: {type: String},
-    },
-    taxPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
+    /* TODO: add payment id ?  */
     shippingPrice: {
       type: Number,
       required: true,
@@ -71,6 +61,8 @@ let orderSchema = new mongoose.Schema(
 );
 
 const Order = mongoose.model("Order", orderSchema);
+
+/* TODO: validate model */
 
 // function validateOrder(order) {
 //   const schema = Joi.object({

@@ -22,7 +22,7 @@ getAllUsers = async (req, res) => {
 // @access  Public 
 getUsersCount = async (req, res) => {
   try {
-    const userCount = await User.countDocuments({});
+    const userCount = await User.countDocuments({}); // counts users in db 
     res.status(200).json({count: userCount});
   } catch (err) {
     res.status(404).send('No Users in DB')  
@@ -33,7 +33,7 @@ getUsersCount = async (req, res) => {
 // @access  Public 
 getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id); // findById method mongoose | takes id from url params 
     if (user) {
       res.status(200).json({
         id: user._id,
@@ -51,7 +51,7 @@ getUserById = async (req, res) => {
 
 getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id); // takes currently logged in user id 
     if (user) {
       res.status(200).json({
         id: user._id,

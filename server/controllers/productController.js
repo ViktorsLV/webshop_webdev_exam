@@ -27,7 +27,38 @@ getOneProduct = async (req, res) => {
   }
 };
 
+// @route   POST /api/products
+// @access  Private/Admin
+createProduct = async (req, res) => {
+  
+  const product = new Product({
+    name: 'Test product',
+    price: 100,
+    user: req.user._id,
+    image: '/images/test.jpg',
+    brand: 'Test brand',
+    category: 'Test category',
+    countInStock: 50,
+    numReviews: 0,
+    description: 'Test description',
+  })
+
+  try {
+    const createdProduct = await product.save()
+
+    if(!createdProduct) {
+      throw new Error("Something went wrong, please, try again");
+    } else {
+      res.status(201).json(createdProduct)
+    }
+
+  } catch (error) {
+    res.status(400).json("Invalid data", error);
+  }
+}
+
 module.exports = {
   getAllProducts,
   getOneProduct,
+  createProduct
 };

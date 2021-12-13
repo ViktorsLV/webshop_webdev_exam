@@ -2,7 +2,7 @@ const { Order } = require("../models/orderModel");
 
 // @route   POST /api/orders
 // @access  Private
-const addOrderItems = async (req, res) => {
+const createOrder = async (req, res) => {
   const { orderItems, shippingAddress, paymentMethod, itemsPrice, shippingPrice, totalPrice } = req.body;
 
   if (orderItems && orderItems.length === 0) {
@@ -28,10 +28,8 @@ const addOrderItems = async (req, res) => {
 // @route   GET /api/orders/:id
 // @access  Private
 const getOrderById = async (req, res) => {
-  const order = await Order.findById(req.params.id).populate(
-    "user",
-    "name email"
-  );
+  // ( https://mongoosejs.com/docs/populate.html#field-selection - population docs ) using populate to join data -> reference documents in other collections
+  const order = await Order.findById(req.params.id).populate("user", "name email"); // add to request response also the users name and email. 
 
   if (order) {
     res.json(order);
@@ -85,12 +83,13 @@ const updateOrderToDelivered = async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = async (req, res) => {
+  // with "populate" take "id" and "name" from -> user document
   const orders = await Order.find({}).populate("user", "id name"); // admin endpoint only to see all orders made for this webshop
   res.json(orders);
 };
 
 module.exports = {
-  addOrderItems,
+  createOrder,
   getOrderById,
   updateOrderToPaid,
   updateOrderToDelivered,

@@ -20,22 +20,12 @@ function toggleMenu() {
     showMenu = !showMenu;
 }
 
-/* THEME CHANGER */
-let themeDots = document.getElementsByClassName('theme-dot')
-
-/* local storage */
+/* local storage theme change */
 let theme = localStorage.getItem('theme')
 if (theme == null) {
     setTheme('light')
 } else {
     setTheme(theme)
-}
-
-for (i=0; themeDots.length > i; i++) {
-    themeDots[i].addEventListener('click', function(){
-        let mode = this.dataset.mode
-        setTheme(mode);
-    })
 }
 
 function setTheme(mode) {
@@ -49,37 +39,7 @@ function setTheme(mode) {
 }
 
 
-/* BATTERY CHARGE ANIMATION */
-
-function chargeBattery() {
-    let battery = document.getElementById('battery');
-    battery.innerHTML = "&#xf244;";
-    setTimeout(function(){
-        battery.innerHTML = "&#xf243;";
-    }, 1000)
-    setTimeout(function(){
-        battery.innerHTML = "&#xf242;";
-    }, 2000)
-    setTimeout(function(){
-        battery.innerHTML = "&#xf241;";
-    }, 3000)
-    setTimeout(function(){
-        battery.innerHTML = "&#xf240;";
-    }, 4000)
-}
-
-chargeBattery();
-
-// Run Animation every 5 Seconds
-setInterval(chargeBattery, 5000)
-
-
-// refreshing page on home when clicking on skills
-const refreshSkills = document.querySelector('.refresh')
-
 const refreshPage = () => {
     location.reload();
     // console.log('here');
 }
-
-refreshSkills.addEventListener('click', refreshPage);

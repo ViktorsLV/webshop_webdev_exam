@@ -117,7 +117,7 @@ p, li, span, label, input, textarea, div {
     text-align: center;
     padding: 1%;
     background: #569b56;
-    color: var(--main-text);
+    color: white;
     margin-bottom: 10px;
     font-family: inherit;
     display: none;

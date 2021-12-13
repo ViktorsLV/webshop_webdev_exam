@@ -8,11 +8,11 @@ loginUser = async (req, res) => {
   const { email, password } = req.body; // take the values from request body
 
     const user = await User.findOne({ email }); // find the user by email from DB
-    if (!user) return res.status(400).send("Email and/or password is wrong"); // if user is not found, return 404 and message
+    if (!user) return res.status(400).json({"Error": "Email and/or password is wrong"}); // if user is not found, return 404 and message
 
     const validPassword = await bcrypt.compare(password, user.password); // compare password to the one stored in DB
     if (!validPassword){
-      return res.status(400).send("Email and/or password is wrong"); // if password is wrong -> send message
+      return res.status(400).json({"Error": "Email and/or password is wrong"}); // if password is wrong -> send message
     }
     if (user && validPassword){ // if both checks are true -> return user
       return res.status(200).json({
@@ -24,7 +24,7 @@ loginUser = async (req, res) => {
         token: generateToken(user._id), // generate user token for session on frontend
       })
     } else {
-      res.status(401).json("error: Invalid user data");
+      res.status(401).json({"Error": "Invalid user data"});
     }
 };
 

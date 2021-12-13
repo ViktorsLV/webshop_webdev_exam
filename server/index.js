@@ -24,7 +24,7 @@ app.use(cors())
 // app.use(errorHandler);
 // app.use(notFound)
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("API is running");
 });
 

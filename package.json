@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/index",
-    "server": "nodemon backend/index",
+    "start": "node server/index",
+    "server": "nodemon server/index",
     "client": "yarn --cwd frontend start",
     "dev": "concurrently \"yarn server\" \"yarn client\" ",
-    "data:import": "node backend/data/seeder",
-    "data:destroy": "node backend/data/seeder -d"
+    "data:import": "node server/data/seeder",
+    "data:destroy": "node server/data/seeder -d"
   },
   "repository": "https://github.com/ViktorsLV/webshop_node_react.git",
   "author": "Viktor <viktors.ch11@gmail.com>",

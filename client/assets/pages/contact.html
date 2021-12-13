@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Contact us for support or help on your purchases!">
+    <meta name="description" content="Contact us for support or help on your purchases!">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
         integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-        <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <link id="theme-style" rel="stylesheet" href="">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
     <script src="../scripts/main.js" defer></script>
@@ -22,8 +21,8 @@
 <body>
 
     <section class="section1">
-        
-        <!-- nav -->        
+
+        <!-- nav -->
         <div class="menu-btn">
             <div class="btn-line"></div>
             <div class="btn-line"></div>
@@ -50,6 +49,12 @@
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link current">Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="register.html" class="nav-link">Register</a>
+                </li>
             </ul>
         </nav>
 
@@ -58,35 +63,32 @@
     <main>
         <section class="main">
             <div class="container">
-                    <div class="main-container">
-                        <h3 class="post-heading">Contact Form</h3>
+                <h3 class="heading-center">Contact Form</h3>
+                <div class="alert-success">Your message has been sent!</div>
 
-                        <div class="alert">Your message has been sent!</div>
+                <form id="contact-form" class="form-control">
+                    <label>Name</label>
+                    <input class="input-field" type="text" name="name" id="name" required>
 
-                        <form id="contact-form">
-                            <label>Name</label>
-                            <input class="input-field" type="text" name="name" id="name" required>
+                    <label>Subject</label>
+                    <input type="text" class="input-field" name="subject" id="subject" required>
 
-                            <label>Subject</label>
-                            <input type="text" class="input-field" name="subject" id="subject" required>
+                    <label>Email</label>
+                    <input type="email" class="input-field" name="email" id="email" required>
 
-                            <label>Email</label>
-                            <input type="email" class="input-field" name="email" id="email" required>
+                    <label>Message</label>
+                    <textarea name="message" class="input-field" id="message" required></textarea>
 
-                            <label>Message</label>
-                            <textarea name="message" class="input-field" id="message" required></textarea>
-
-                            <input type="submit" value="Send" id="submit-btn">
-                        </form>
-                    </div>
-                </div>
+                    <input type="submit" value="Send" id="submit-btn" class="submit-btn">
+                </form>
             </div>
         </section>
 
         <footer class="footer">
             <p>Made with &#128151; by Viktors Cebotarjovs
-                <br/>
-            Copyright &copy; 2021 | Icons by Font Awesome</p>
+                <br />
+                Copyright &copy; 2021 | Icons by Font Awesome
+            </p>
         </footer>
 
     </main>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Checkout to get yor items delivered as soon as possible!">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link id="theme-style" rel="stylesheet" href="">
+  <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
+  <script src="../scripts/main.js" defer></script>
+  <title>Log in | Webshop</title>
+</head>
+
+<body>
+
+
+  <section class="main">
+    <!-- nav -->
+    <div class="menu-btn">
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+    </div>
+
+    <nav class="nav-wrapper menu">
+      <a href="../../index.html" class="menu-logo mobile-hide">
+        <!-- LOGO -->
+        <div>WEBSHOP</div>
+      </a>
+
+      <!-- nav items -->
+      <ul id="navigation" class="menu-nav">
+        <li class="nav-item">
+          <a href="../../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="shop.html" class="nav-link">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a href="cart.html" class="nav-link">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html" class="nav-link current">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="register.html" class="nav-link">Register</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <main>
+      <section class="main">
+        <div class="container">
+          <h3 class="heading-center">Log in</h3>
+
+          <div class="alert-success" id="alertSuccess"></div>
+          <div class="alert-error" id="alertError"></div>
+
+          <form id="login-form" class="form-control">
+              <label>Email</label>
+              <input type="email" name="" id="loginEmail" placeholder="Your email" class="input-field">
+
+              <label>Password</label>
+              <input type="password" name="" id="loginPassword" placeholder="Your password" class="input-field">
+
+              <!-- TODO: change cursor and btn disable if fields are not filled -->
+              <input type="submit" value="Send" id="submit-btn" class="submit-btn">
+          </form>
+        </div>
+      
+      </section>
+    </main>
+
+
+  <footer class="footer">
+    <p>Made with &#128151; by Viktors Cebotarjovs
+      <br />
+      Copyright &copy; 2021 | Icons by Font Awesome
+    </p>
+  </footer>
+</body>
+
+</html>

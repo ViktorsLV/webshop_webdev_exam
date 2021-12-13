@@ -4,16 +4,16 @@ const { auth } = require("../middlewares/authentication");
 const orderController = require('../controllers/orderController')
 
 /* TODO: add admin permissions, AUTH routes */
-router.get("/", orderController.getOrders); // TODO: admin ? 
+router.get("/", auth,  orderController.getOrders); // TODO: admin ? 
 
-router.post("/myOrders", orderController.getMyOrders); // get current users orders 
+router.get("/myOrders", auth, orderController.getMyOrders); // get current users orders 
 
 router.post("/", auth, orderController.createOrder); 
 
-router.get("/:id", orderController.getOrderById);
+router.get("/:id", auth, orderController.getOrderById);
 
-router.put("/:id/pay", orderController.updateOrderToPaid);
+router.put("/:id/pay", auth, orderController.updateOrderToPaid);
 
-router.put("/:id/deliver", orderController.updateOrderToDelivered);
+router.put("/:id/deliver", auth, orderController.updateOrderToDelivered);
 
 module.exports = router

@@ -25,6 +25,14 @@ const createOrder = async (req, res) => {
   }
 };
 
+// @route   GET /api/orders
+// @access  Private/Admin
+const getOrders = async (req, res) => {
+  // with "populate" take "id" and "name" from -> user document
+  const orders = await Order.find({}).populate("user", "id name"); // admin endpoint only to see all orders made for this webshop
+  res.json(orders);
+};
+
 // @route   GET /api/orders/:id
 // @access  Private
 const getOrderById = async (req, res) => {
@@ -78,14 +86,6 @@ const updateOrderToDelivered = async (req, res) => {
   } else {
     res.status(404).json("Order not found");
   }
-};
-
-// @route   GET /api/orders
-// @access  Private/Admin
-const getOrders = async (req, res) => {
-  // with "populate" take "id" and "name" from -> user document
-  const orders = await Order.find({}).populate("user", "id name"); // admin endpoint only to see all orders made for this webshop
-  res.json(orders);
 };
 
 module.exports = {

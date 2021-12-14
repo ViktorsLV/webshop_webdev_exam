@@ -14,6 +14,7 @@
   <link id="theme-style" rel="stylesheet" href="">
   <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
   <script src="../scripts/main.js" defer></script>
+  <script src="../scripts/auth/register.js" defer></script>
   <title>Register | Webshop </title>
 </head>
 <body>
@@ -40,18 +41,22 @@
         <li class="nav-item">
           <a href="shop.html" class="nav-link">Shop</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item auth">
           <a href="cart.html" class="nav-link">Cart</a>
         </li>
         <li class="nav-item">
           <a href="contact.html" class="nav-link">Contact</a>
         </li>
         <li class="nav-item">
-          <a href="login.html" class="nav-link">Login</a>
+          <a href="login.html" class="nav-link nav-margin">Log in</a>
         </li>
         <li class="nav-item">
-          <a href="register.html" class="nav-link current">Register</a>
+          <a href="register.html" class="nav-link current nav-margin">Register</a>
         </li>
+
+        <li class="nav-item auth">
+          <a href="assets/pages/register.html" class="nav-link nav-margin">Logout</a>
+      </li>
       </ul>
 
     </nav>
@@ -59,26 +64,27 @@
     <main>
       <section class="main">
         <div class="container">
-          <h3 class="heading-center">Register</h3>
+          <h3 class="heading-center">Register Account</h3>
 
-          <div class="alert-success" id="alertSuccess"></div>
-          <div class="alert-error" id="alertError"></div>
-
+          
           <form id="login-form" class="form-control">
-              <label>First Name</label>
+              <div class="alert-success" id="alertSuccess"></div>
+              <div class="alert-error" id="alertError"></div>
+
+              <label>First Name*</label>
               <input type="text" name="" id="firstName" placeholder="Your first name" class="input-field">
 
-              <label>Last Name</label>
+              <label>Last Name*</label>
               <input type="text" name="" id="lastName" placeholder="Your last name" class="input-field">
 
-              <label>Email</label>
-              <input type="email" name="" id="loginEmail" placeholder="Your email" class="input-field">
+              <label>Email*</label>
+              <input type="email" name="" id="newEmail" placeholder="Your email" class="input-field">
 
-              <label>Password</label>
-              <input type="password" name="" id="loginPassword" placeholder="Your password" class="input-field">
+              <label>Password*</label>
+              <input type="password" name="" id="newPassword" placeholder="Your password" class="input-field">
 
               <!-- TODO: change cursor and btn disable if fields are not filled -->
-              <input type="submit" value="Send" id="submit-btn" class="submit-btn">
+              <input type="submit" value="Send" id="registerButton" class="submit-btn">
               
               <div class="text-center">
                 <p>Already have an account? <a href="login.html">Log in</a></p>

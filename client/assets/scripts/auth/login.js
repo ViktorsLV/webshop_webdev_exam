@@ -1,5 +1,7 @@
 const baseUrl = 'http://localhost:5000/api'
 const localStorage = window.localStorage;
+
+/* LOG IN USER */
 const loginEmail = document.querySelector('#loginEmail');
 const loginPassword = document.querySelector('#loginPassword');
 const loginButton = document.querySelector('#loginButton');
@@ -44,7 +46,7 @@ async function loginUser(data) {
 }
 
 // add handler on login form button click
-loginButton.addEventListener('click', (e) =>{
+loginButton.addEventListener('click', (e) => {
     e.preventDefault();
 
     // check if the fields are not empty
@@ -52,6 +54,7 @@ loginButton.addEventListener('click', (e) =>{
       const text = "Email and password must be filled!"
       showAlert(text, alertError)
     } else {
+      /* destructuring obj */
       const data = { email: loginEmail.value, password: loginPassword.value}
       loginUser(data);
     }

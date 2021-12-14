@@ -80,13 +80,12 @@ p, li, span, label, input, textarea, div {
 .form-control {
     display: block;
     width: 40%;
-    margin: 0 auto;
+    margin: 0 auto 5vh auto;
     border: 1px solid var(--border-color);
     padding: 15px;
     border-radius: 5px;
     background-color: var(--main-color);
 }
-
 
 .form-control label {
     line-height: 2.7rem;
@@ -238,6 +237,9 @@ main {
 @media  screen and (max-width: 1200px) {
     .pc-hide {
         display: none;
+    }
+    .form-control {
+        width: 80%;
     }
 }
 

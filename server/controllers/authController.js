@@ -31,6 +31,7 @@ loginUser = async (req, res) => {
 // @route   POST /api/users/register
 // @access  Public
 registerUser = async (req, res) => {
+  /* FIXME: Error handling */
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -39,7 +40,7 @@ registerUser = async (req, res) => {
   const userExists = await User.findOne({ email }); // check if this email already has been registered
 
   if (userExists) { // if the email already exists -> dont allow the user to log in and throw error
-    res.status(400).send("User already exists");
+    res.status(400).json({"Error": "User already exists"});
     throw new Error("User already exists");
   }
 

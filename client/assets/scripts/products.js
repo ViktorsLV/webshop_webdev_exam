@@ -30,8 +30,8 @@ async function fetchProducts() {
         productBox.innerHTML += `
         <div class="product">
           <img src="../${r.image}" alt="${r.image}">
-          <h5>${r.name}</h5>
-          <h4>$ ${r.price}</h4>
+          <h5 class="no-spacing">${r.name}</h5>
+          <h4 class="no-spacing">$ ${r.price}</h4>
         </div>
         `;
     });

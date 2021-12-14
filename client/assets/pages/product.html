@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Specializing in responsive designs, custom and dynamic web solutions with the help of HTML5, CSS3, JavaScript and WordPress!">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link id="theme-style" rel="stylesheet" href="">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
+    <script src="../scripts/main.js" defer></script>
+    <!-- <script src="../scripts/products.js" defer></script> -->
+    <title>Product | Webshop</title>
+</head>
+
+<body>
+    <section class="main">
+        <!-- nav -->
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+
+        <nav class="nav-wrapper menu">
+            <a href="../../index.html" class="menu-logo mobile-hide">
+                <!-- LOGO -->
+                <div>WEBSHOP</div>
+            </a>
+
+            <!-- nav items -->
+            <ul id="navigation" class="menu-nav">
+                <li class="nav-item">
+                    <a href="../../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="shop.html" class="nav-link current">Shop</a>
+                </li>
+                <li class="nav-item auth">
+                    <a href="cart.html" class="nav-link">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item guest nav-margin">
+                    <a href="login.html" class="nav-link">Log in</a>
+                </li>
+                <li class="nav-item guest">
+                    <a href="register.html" class="nav-link">Register</a>
+                </li>
+                <!-- TODO: Add logout page and functionality -->
+                <li class="nav-item auth ">
+                    <a href="assets/pages/register.html" class="nav-link nav-margin">Log out</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="container">
+
+            <!-- TODO: Dynamic -->
+            <!-- <h1>Product Name </h1> -->
+
+            <div class="product-grid" id="productBox">
+
+                <div class="product-image">
+                    <img src="../images/airpods.jpg" alt="">
+                </div>
+
+                <div class="product-details flex-col">
+                    <h3 class="no-spacing">Product Name</h3>
+                    <h4 class="no-spacing">$ 79.99</h4>
+                    <div class="mt-2">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem aut omnis fuga quisquam mollitia repudiandae, maiores blanditiis! Ducimus natus provident fugit dicta, omnis soluta explicabo animi. Nulla a magni obcaecati voluptatem culpa odio sequi sed laborum hic nisi corrupti quisquam in fugiat, ipsam voluptatum voluptatibus cupiditate? Non aperiam officiis sit, temporibus ipsa eligendi deserunt, minima minus rem mollitia qui illo iste omnis! Modi a corrupti, debitis distinctio repellat laborum nesciunt maxime sequi consequatur quos velit in deserunt pariatur odit. Sunt, ipsum nulla quidem esse illum quia quibusdam architecto expedita repellendus, accusantium earum, assumenda veniam totam? Fugiat debitis ipsum quia consectetur.
+                    </div>
+                </div>
+
+                <div class="product-checkout flex-col">
+                    <div class="flex-row between checkout-table">
+                        <p>Price</p>
+                        <p>$ 79.99</p>
+                    </div>
+                    <div class="flex-row between checkout-table">
+                        <p>Status</p>
+                        <p>In Stock</p>
+                    </div>
+                    <button class="submit-btn">ADD TO CART</button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <p>Made with &#128151; by Viktors Cebotarjovs
+            <br />
+            Copyright &copy; <span id="copyright">
+                <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+            </span> | Icons by Font Awesome
+        </p>
+    </footer>
+</body>
+
+</html>

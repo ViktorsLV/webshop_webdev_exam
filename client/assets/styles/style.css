@@ -34,7 +34,7 @@ body * {
     box-sizing: border-box;
 }
 
-h1, h2, h3 ,h4,h5, h6, strong {
+h1, h2, h3, h4, h5, h6, strong {
     color: var(--main-text);
     font-family: 'Russo One', sans-serif;
     font-weight: 500;
@@ -67,7 +67,6 @@ p, li, span, label, input, textarea, div {
 }
 
 /* COMMON - REUSABLE */
-
 .main {
     background-color: var(--secondary-color);
     border: 1px solid var(--border-color);
@@ -79,6 +78,27 @@ p, li, span, label, input, textarea, div {
     box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
 }
 
+.mt-2 {
+    margin-top: 2vw;
+}
+
+.mb-2 {
+    margin-bottom: 2vw;
+}
+
+.no-spacing {
+    margin: 0;
+    padding: 0;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
 .container {
     width: 85%;
     margin: 0 auto 5vw auto;
@@ -88,6 +108,16 @@ p, li, span, label, input, textarea, div {
     display: flex;
     flex-wrap: wrap;
 }
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.between {
+    justify-content: space-between;
+}
+
 /* text */
 .heading-center {
     text-align: center;
@@ -214,7 +244,7 @@ p, li, span, label, input, textarea, div {
 
 /* NAVIGATION END */
 
-/* PRODUCTS */
+/* SHOP */
 .product {
     /* flex-grow: 1; */
     flex-basis: 25%;
@@ -232,8 +262,6 @@ p, li, span, label, input, textarea, div {
 }
 
 .product h4, .product h5 {
-    margin: 0;
-    padding: 0;
     /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
@@ -251,7 +279,47 @@ p, li, span, label, input, textarea, div {
     color: var(--btn-hover);
 }
 
-/* CONTACT PAGE END */
+/* SHOP PAGE END */
+
+/* SINGLE PRODUCT PAGE */
+.product-grid {
+    margin: 5vw auto;
+    display: grid;
+    gap: 2vw;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-areas: 'image details checkout';
+}
+
+.product-image img {
+    grid-area: image;    
+    width: 100%;
+}
+
+.product-image {
+    grid-area: image;
+}
+
+.product-details {
+    grid-area: details;
+}
+
+.product-checkout {
+    grid-area: checkout;
+    border: 1px solid var(--secondary-text);
+    border-radius: 8px;
+    padding: 4%;
+    height: max-content;
+}
+
+.checkout-table {
+    border-bottom: 1px solid var(--secondary-text);
+}
+
+.checkout-table p:nth-child(2) {
+    font-weight: bold;
+}
+
+/* SINGLE PRODUCT PAGE END*/
 
 /* FOOTER */
 .footer {

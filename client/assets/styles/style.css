@@ -247,7 +247,7 @@ p, li, span, label, input, textarea, div {
 /* SHOP */
 .product {
     /* flex-grow: 1; */
-    flex-basis: 25%;
+    flex-basis: 20%;
     height: min-content;
     border: 1px solid var(--secondary-text);
     border-radius: 8px;

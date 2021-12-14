@@ -26,13 +26,14 @@ async function fetchProducts() {
       const result = await response.json();
       console.log(result);
       result.forEach(r => {
-        // <a href="http://127.0.0.1:5000/client/post.html?${r.postId}">
         productBox.innerHTML += `
-        <div class="product">
-          <img src="../${r.image}" alt="${r.image}">
-          <h5 class="no-spacing">${r.name}</h5>
-          <h4 class="no-spacing">$ ${r.price}</h4>
-        </div>
+        <a class="product" href="http://127.0.0.1:5500/client/assets/pages/product.html?${r._id}">
+          <div>
+            <img src="../${r.image}" alt="${r.image}">
+            <h5 class="no-spacing">${r.name}</h5>
+            <h4 class="no-spacing">$ ${r.price}</h4>
+          </div>
+        </a>
         `;
     });
       /* TODO: draw HTML */

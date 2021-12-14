@@ -81,7 +81,7 @@ p, li, span, label, input, textarea, div {
 
 .container {
     width: 85%;
-    margin: 0 auto;
+    margin: 0 auto 5vw auto;
 }
 /* flex */
 .flex-row {
@@ -217,8 +217,8 @@ p, li, span, label, input, textarea, div {
 /* PRODUCTS */
 .product {
     /* flex-grow: 1; */
-    flex-basis: 20%;
-    height: max-content;
+    flex-basis: 25%;
+    height: min-content;
     border: 1px solid var(--secondary-text);
     border-radius: 8px;
     padding: 2%;
@@ -234,6 +234,9 @@ p, li, span, label, input, textarea, div {
 .product h4, .product h5 {
     margin: 0;
     padding: 0;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product img {
@@ -288,7 +291,11 @@ main {
     }
 
     .product {
-        flex-basis: 40%;
+        flex-basis: 42%;
+    }
+
+    .flex-row {
+        justify-content: center;
     }
 
     /* HAMBURGER STYLING and NAVIGATION*/
@@ -431,5 +438,17 @@ main {
     }
     footer {
         font-size: 11px;
+    }
+}
+
+@media  screen and (max-width: 525px) {
+    .product {
+        flex-basis: 80%;
+        margin: 3vw 0;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

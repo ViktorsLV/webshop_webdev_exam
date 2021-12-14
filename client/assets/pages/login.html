@@ -90,8 +90,10 @@
   <footer class="footer">
     <p>Made with &#128151; by Viktors Cebotarjovs
       <br />
-      Copyright &copy; 2021 | Icons by Font Awesome
-    </p>
+      Copyright &copy; <span id="copyright">
+          <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+      </span> | Icons by Font Awesome
+  </p>
   </footer>
 </body>
 

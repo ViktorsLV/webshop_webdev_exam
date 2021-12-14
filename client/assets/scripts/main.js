@@ -43,3 +43,18 @@ const refreshPage = () => {
     location.reload();
     // console.log('here');
 }
+
+const auth = document.getElementsByClassName("auth"); 
+const guest = document.getElementsByClassName("guest"); 
+
+/* show pages if user is logged in or not*/
+let token = localStorage.getItem("token");
+if (!token) {
+  for (var i = 0; i < auth.length; i++) {
+    auth[i].style.display = "none";
+  }
+} else {
+    for (var i = 0; i < guest.length; i++) {
+      guest[i].style.display = "none";
+    }
+}

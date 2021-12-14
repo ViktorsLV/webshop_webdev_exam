@@ -53,6 +53,10 @@ a {
     font-family: 'Roboto Mono', monospace;
 }
 
+a:hover {
+    color: #26c3db;
+}
+
 ul {
     list-style: none;
 }
@@ -63,6 +67,15 @@ p, li, span, label, input, textarea, div {
 }
 
 /* COMMON - REUSABLE */
+/* text */
+.heading-center {
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
 /* form */
 .form-control {
     display: block;
@@ -74,9 +87,6 @@ p, li, span, label, input, textarea, div {
     background-color: var(--main-color);
 }
 
-.heading-center {
-    text-align: center;
-}
 
 .form-control label {
     line-height: 2.7rem;
@@ -111,7 +121,7 @@ p, li, span, label, input, textarea, div {
     cursor: pointer;
 } 
 
-/* alerts */
+/* ALERTS */
 
 .alert-success, .alert-error {
     text-align: center;
@@ -193,6 +203,11 @@ p, li, span, label, input, textarea, div {
 #navigation .current {
     color: var(--nav-active);
 }
+
+.nav-margin {
+    margin-left: 3vw;
+}
+
 /* NAVIGATION END */
 
 /* CONTACT PAGE */

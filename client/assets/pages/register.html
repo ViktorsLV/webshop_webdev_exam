@@ -17,6 +17,7 @@
   <script src="../scripts/auth/register.js" defer></script>
   <title>Register | Webshop </title>
 </head>
+
 <body>
 
   <section class="main">
@@ -47,16 +48,16 @@
         <li class="nav-item">
           <a href="contact.html" class="nav-link">Contact</a>
         </li>
-        <li class="nav-item">
-          <a href="login.html" class="nav-link nav-margin">Log in</a>
+        <li class="nav-item guest nav-margin">
+          <a href="login.html" class="nav-link">Log in</a>
         </li>
-        <li class="nav-item">
-          <a href="register.html" class="nav-link current nav-margin">Register</a>
+        <li class="nav-item guest">
+          <a href="register.html" class="nav-link current">Register</a>
         </li>
-
-        <li class="nav-item auth">
-          <a href="assets/pages/register.html" class="nav-link nav-margin">Logout</a>
-      </li>
+        <!-- TODO: Add logout page and functionality -->
+        <li class="nav-item auth ">
+          <a href="assets/pages/register.html" class="nav-link nav-margin">Log out</a>
+        </li>
       </ul>
 
     </nav>
@@ -66,44 +67,44 @@
         <div class="container">
           <h3 class="heading-center">Register Account</h3>
 
-          
+
           <form id="login-form" class="form-control">
-              <div class="alert-success" id="alertSuccess"></div>
-              <div class="alert-error" id="alertError"></div>
+            <div class="alert-success" id="alertSuccess"></div>
+            <div class="alert-error" id="alertError"></div>
 
-              <label>First Name*</label>
-              <input type="text" name="" id="firstName" placeholder="Your first name" class="input-field">
+            <label>First Name*</label>
+            <input type="text" name="" id="firstName" placeholder="Your first name" class="input-field">
 
-              <label>Last Name*</label>
-              <input type="text" name="" id="lastName" placeholder="Your last name" class="input-field">
+            <label>Last Name*</label>
+            <input type="text" name="" id="lastName" placeholder="Your last name" class="input-field">
 
-              <label>Email*</label>
-              <input type="email" name="" id="newEmail" placeholder="Your email" class="input-field">
+            <label>Email*</label>
+            <input type="email" name="" id="newEmail" placeholder="Your email" class="input-field">
 
-              <label>Password*</label>
-              <input type="password" name="" id="newPassword" placeholder="Your password" class="input-field">
+            <label>Password*</label>
+            <input type="password" name="" id="newPassword" placeholder="Your password" class="input-field">
 
-              <!-- TODO: change cursor and btn disable if fields are not filled -->
-              <input type="submit" value="Send" id="registerButton" class="submit-btn">
-              
-              <div class="text-center">
-                <p>Already have an account? <a href="login.html">Log in</a></p>
-              </div>
+            <!-- TODO: change cursor and btn disable if fields are not filled -->
+            <input type="submit" value="Send" id="registerButton" class="submit-btn">
+
+            <div class="text-center">
+              <p>Already have an account? <a href="login.html">Log in</a></p>
+            </div>
           </form>
         </div>
-      
+
       </section>
     </main>
 
 
-  <footer class="footer">
-    <p>Made with &#128151; by Viktors Cebotarjovs
-      <br />
-      Copyright &copy; <span id="copyright">
+    <footer class="footer">
+      <p>Made with &#128151; by Viktors Cebotarjovs
+        <br />
+        Copyright &copy; <span id="copyright">
           <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-      </span> | Icons by Font Awesome
-  </p>
-  </footer>
+        </span> | Icons by Font Awesome
+      </p>
+    </footer>
 </body>
 
 </html>

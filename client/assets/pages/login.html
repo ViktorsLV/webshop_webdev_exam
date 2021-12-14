@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../styles/style.css">
   <link id="theme-style" rel="stylesheet" href="">
   <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
-  <!-- <script src="../scripts/main.js" defer></script> -->
+  <script src="../scripts/main.js" defer></script>
   <script src="../scripts/auth/login.js" defer></script>
   <title>Log in | Webshop</title>
 </head>
@@ -43,17 +43,21 @@
         <li class="nav-item">
           <a href="shop.html" class="nav-link">Shop</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item auth">
           <a href="cart.html" class="nav-link">Cart</a>
         </li>
         <li class="nav-item">
           <a href="contact.html" class="nav-link">Contact</a>
         </li>
-        <li class="nav-item">
-          <a href="login.html" class="nav-link current">Login</a>
+        <li class="nav-item guest nav-margin">
+          <a href="login.html" class="nav-link current">Log in</a>
         </li>
-        <li class="nav-item">
-          <a href="register.html" class="nav-link">Register</a>
+        <li class="nav-item guest">
+            <a href="register.html" class="nav-link">Register</a>
+        </li>
+        <!-- TODO: Add logout page and functionality -->
+        <li class="nav-item auth">
+            <a href="assets/pages/register.html" class="nav-link nav-margin">Log out</a>
         </li>
       </ul>
 

@@ -6,7 +6,10 @@ const productImg = document.querySelector("#productImg");
 const productName = document.querySelector("#productName");
 const productPrice = document.querySelector("#productPrice");
 const productBox = document.querySelector("#productBox");
-const submit = document.getElementById("submit");
+let cartItems = JSON.parse(localStorage.getItem('cart'));
+if (!cartItems) {
+	cartItems = [];
+}
 
 const productId = location.href.split("?")[1]; // getting the productId which was passed on to URL string
 
@@ -51,18 +54,35 @@ async function fetchProducts() {
                 <p>${product.countInStock > 0 ? "In Stock" : "Out of Stock"}</p>
             </div>
             <div id="div">
+            
             </div>
         </div>
-      `;
-      // hide button if there are no stock for item
-      const div = document.getElementById('div'); 
-      product.countInStock > 0 ? div.innerHTML = `<button class="submit-btn submit">ADD TO CART</button>` : div.innerHTML = `<button class="submit-btn d-none">ADD TO CART</button>`
+            `;
+            // hide button if there are no stock for item
+        const div = document.getElementById('div');
+        const btn = document.createElement('button');
+        btn.className = 'submit-btn';
+        btn.innerHTML = `ADD TO CART`
+        div.appendChild(btn);
+        product.countInStock > 0 ? btn.style.display = 'block' : btn.style.display = 'none' 
+        btn.addEventListener('click', () => {addToCart(product)});
     }
   } catch (error) {
     alert(error);
   }
 }
 
-fetchProducts();
+window.load = fetchProducts();
 
 /* ADDING PRODUCTS TO CART */
+function addToCart(product) { // 2
+	for (let i = 0; i < cartItems.length; i++) {
+		if (cartItems[i]._id === product._id) { // check if the item has already been added to cart 
+      // TODO: send alert here that it has already been added
+      console.log('added')
+			return;
+		} 
+	}
+  cartItems.push(product);
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+}

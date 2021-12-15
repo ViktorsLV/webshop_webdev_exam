@@ -6,6 +6,7 @@ const productImg = document.querySelector("#productImg");
 const productName = document.querySelector("#productName");
 const productPrice = document.querySelector("#productPrice");
 const productBox = document.querySelector("#productBox");
+const submit = document.getElementById("submit");
 
 const productId = location.href.split("?")[1]; // getting the productId which was passed on to URL string
 
@@ -47,11 +48,15 @@ async function fetchProducts() {
             </div>
             <div class="flex-row between checkout-table">
                 <p>Status</p>
-                <p>${product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</p>
+                <p>${product.countInStock > 0 ? "In Stock" : "Out of Stock"}</p>
             </div>
-            <button class="submit-btn">ADD TO CART</button>
+            <div id="div">
+            </div>
         </div>
       `;
+      // hide button if there are no stock for item
+      const div = document.getElementById('div'); 
+      product.countInStock > 0 ? div.innerHTML = `<button class="submit-btn submit">ADD TO CART</button>` : div.innerHTML = `<button class="submit-btn d-none">ADD TO CART</button>`
     }
   } catch (error) {
     alert(error);
@@ -59,3 +64,5 @@ async function fetchProducts() {
 }
 
 fetchProducts();
+
+/* ADDING PRODUCTS TO CART */

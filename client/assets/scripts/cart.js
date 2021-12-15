@@ -51,9 +51,11 @@ function getCartItems() {
     // div.appendChild(btn);
     parentElement.innerHTML = items.join("");
     document.querySelector(".checkout").classList.remove("d-none");
+    document.querySelector(".cart-checkout").classList.remove("d-none");
     // cartTotal.innerHTML = '$' + countTotal();
   } else {
-    document.querySelector(".checkout").classList.add("d-none");
+		document.querySelector(".checkout").classList.add("d-none");
+    document.querySelector(".cart-checkout").classList.add("d-none");
     parentElement.innerHTML =
       '<h4 class="empty">Your shopping cart is empty</h4>';
     // cartTotal.innerHTML = '';

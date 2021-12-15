@@ -1,18 +1,24 @@
 const parentElement = document.querySelector("#itemDetails");
 const select = document.querySelector("#select");
+const remove = document.querySelector("#remove");
+const clearCart = document.querySelector("#clearCart");
 
 let cartItems = JSON.parse(localStorage.getItem("cart"));
 if (!cartItems) {
   cartItems = [];
 }
 
-const getCartItems = function () {
+function getCartItems() {
   if (cartItems.length > 0) {
     const items = cartItems.map((product) => {
-			// mapping through array with numbers (countInStock) and adding it into option dropdown
-			let options = [...Array(product.countInStock).keys()].map(o => {
-				return `<option value="${o + 1}">${o + 1}</option>`
-			})
+    // cartItems.map((product) => {
+      let options = [...Array(product.countInStock).keys()].map((o) => {
+        return `<option value="${o + 1}">${o + 1}</option>`;
+      });
+
+      // remove.addEventListener('click', () => {removeItem(product.price)});
+      // mapping through array with numbers (countInStock) and adding it into option dropdown
+      // parentElement.innerHTML += `
       return `
 				<div class="flex-row cart-items">
 						<div class="cart-img">
@@ -31,13 +37,19 @@ const getCartItems = function () {
 										</select>
 								</form>
 						</div>
-						<div>
-								<button class="cart-btn btn submit-btn">remove</button>
+							<div id="div">
+								<button class="cart-btn btn submit-btn" id="remove"">Remove item</button>	
+							</div>
 						</div>
-				</div>
-			`;
+						`;
     });
-		parentElement.innerHTML = items.join("");
+    // const div = document.getElementById('div');
+    // const btn = document.createElement('button');
+    // btn.className = 'submit-btn';
+    // btn.innerHTML = `Remove item`
+    // btn.onClick = () => { console.log(product.name)}
+    // div.appendChild(btn);
+    parentElement.innerHTML = items.join("");
     document.querySelector(".checkout").classList.remove("d-none");
     // cartTotal.innerHTML = '$' + countTotal();
   } else {
@@ -47,6 +59,26 @@ const getCartItems = function () {
     // cartTotal.innerHTML = '';
   }
 };
+getCartItems();
+
+clearCart.addEventListener("click", clear);
+
+function removeItem(itemId) {
+  console.log(itemId);
+}
+
+function clear() {
+	cartItems = [];
+	localStorage.removeItem("cart");
+  getCartItems();
+}
+
+// const removeItem = (itemId) => {
+// 	console.log(itemId)
+// const items = cartItems.filter(item => item._id === itemId);
+// localStorage.setItem('cart', JSON.stringify(items));
+// getCartItems()
+// }
 
 // function updateCartItems(product) { // 2
 // 	for (let i = 0; i < cartItems.length; i++) {
@@ -58,5 +90,3 @@ const getCartItems = function () {
 // 	}
 // 	cartItems.push(product);
 // }
-
-getCartItems();

@@ -325,6 +325,35 @@ p, li, span, label, input, textarea, div {
 
 /* SINGLE PRODUCT PAGE END*/
 
+/* CART PAGE */
+.checkout {
+    display: flex;
+}
+.cart-items {
+    border-bottom: 1px solid var(--border-color);
+    margin: 1.5vw 5vw 0 0;
+}
+.cart-list {
+    flex: 6;
+}
+.cart-checkout {
+    flex: 2;
+}
+.cart-items div {
+    width: 15%;
+    margin: 0 0.5vw;
+}
+.cart-img img {
+    width: 100%;
+}
+.cart-title, .cart-price {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+/* CART PAGE END */
+
 /* FOOTER */
 .footer {
     text-align: center;
@@ -374,6 +403,14 @@ main {
 
     .flex-row {
         justify-content: center;
+    }
+
+    .checkout {
+        display: flex;
+        flex-direction: column;
+    }
+    .cart-checkout, .cart-list {
+        margin-top: 4vw;
     }
 
     /* HAMBURGER STYLING and NAVIGATION*/

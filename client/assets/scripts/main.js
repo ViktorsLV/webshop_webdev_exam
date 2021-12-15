@@ -5,7 +5,8 @@ const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuLogo = document.querySelector('.menu-logo'); // all of the above need adding classes
 const navItems = document.querySelectorAll('.nav-item'); // needs looping through 
-
+const logout = document.querySelector('#logout'); // logout btn 
+const token = localStorage.getItem("token");
 // Setting state of menu 
 let showMenu = false;
 
@@ -48,7 +49,6 @@ const auth = document.getElementsByClassName("auth");
 const guest = document.getElementsByClassName("guest"); 
 
 /* show pages if user is logged in or not*/
-let token = localStorage.getItem("token");
 if (!token) {
   for (var i = 0; i < auth.length; i++) {
     auth[i].style.display = "none";
@@ -58,3 +58,12 @@ if (!token) {
       guest[i].style.display = "none";
     }
 }
+
+function leave() {
+    if (token) {
+        localStorage.clear(); // logout user and clear the cart
+        location.href = 'http://127.0.0.1:5500/client/index.html';
+    }
+}
+
+logout.addEventListener('click', leave);

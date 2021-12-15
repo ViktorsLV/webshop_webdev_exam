@@ -14,6 +14,7 @@
     <link id="theme-style" rel="stylesheet" href="">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
     <script src="../scripts/main.js" defer></script>
+    <script src="../scripts/cart.js" defer></script>
     <title>Your Cart | Webshop</title>
 </head>
 
@@ -67,61 +68,15 @@
             <h1>Your Cart</h1>
 
             <div class="checkout">
-                <div class="flex-col cart-list" id="">
-                    <div class="flex-row cart-items">
-                        <div class="cart-img">
-                            <img src="../images/airpods.jpg" alt="">
-                        </div>
-                        <div>
-                            <h5 class="cart-title">Airpods from Apple</h5>
-                        </div>
-                        <div>
-                            <h5 class="cart-price">$ 79.99</h6>
-                        </div>
-                        <div class="cart-qty">
-                            <form action="">
-                                <select name="cars" id="cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="opel">Opel</option>
-                                    <option value="audi">Audi</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div>
-                            <button class="cart-btn btn submit-btn">remove</button>
-                        </div>
-                    </div>
-                    <div class="flex-row cart-items">
-                        <div class="cart-img">
-                            <img src="../images/airpods.jpg" alt="">
-                        </div>
-                        <div>
-                            <h5 class="cart-title">Airpods from Apple</h5>
-                        </div>
-                        <div>
-                            <h5 class="cart-price">$ 79.99</h5>
-                        </div>
-                        <div class="cart-qty">
-                            <form action="">
-                                <select name="cars" id="cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="opel">Opel</option>
-                                    <option value="audi">Audi</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div>
-                            <button class="cart-btn btn submit-btn">remove</button>
-                        </div>
-                    </div>
+                <div class="flex-col cart-list" id="itemDetails">
+                    
                 </div>
+
                 <div class="cart-checkout">
                     <div class="product-checkout flex-col">
                         <div class="flex-row between checkout-table">
                             <p>Total Price:</p>
-                            <p>$ 700</p>
+                            <p id="totalPrice"></p> <!-- TODO: calculate price -->
                         </div>
                         <div id="div">
                             <button class="submit-btn" id="submit">PROCEED TO CHECKOUT</button>

@@ -102,7 +102,9 @@ div {
   -moz-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
 }
-
+.pointer {
+  cursor: pointer;
+}
 .d-none {
   display: none;
 }

@@ -27,9 +27,6 @@ function countTotal() {
 function getCartItems() {
   if (cartItems.length > 0) {
     const items = cartItems.map((product) => {
-      let options = [...Array(product.countInStock).keys()].map((o) => {
-        return `<option value="${o + 1}">${o + 1}</option>`; // show only the available quantity as select
-      });
       return `
 				<div class="flex-row cart-items">
           <div class="cart-img">
@@ -42,11 +39,9 @@ function getCartItems() {
               <h5 class="cart-price">$ ${product.price}</h6>
           </div>
           <div class="cart-qty">
-              <form action="">
-                  <select name="qty" id="select" onchange="changeQty(this.value, '${product._id}')">
-                    ${options}
-                  </select>
-              </form>
+            <button class="button-minus pointer" onClick="minus('${product._id}')">-</button>
+              <span class="countOfProduct">${product.qty}</span>
+            <button class="button-plus pointer" onClick="plus('${product._id}')">+</button>
           </div>
           <div id="div">
             <button class="cart-btn remove-btn" id="remove" onClick="removeItem('${product._id}')">Remove item</button>	
@@ -80,25 +75,29 @@ function removeItem(itemId) {
   showAlert(text, alertSuccess)
 }
 
-function changeQty(qty, itemId) {
-  console.log(qty)
+function minus(itemId) {
   let item = cartItems.findIndex((item) => item._id === itemId);
-  cartItems[item].qty = qty;
-  // select.value = cartItems[item].qty
-  countTotal()
-  save()
+  cartItems[item].qty -= 1
+  if (cartItems[item].qty <= 0) {
+    removeItem(itemId)    
+  }
+  console.log('minus')
+  save(); 
   getCartItems(); 
+}
+
+function plus(itemId) {
+  let item = cartItems.findIndex((item) => item._id === itemId);
+  cartItems[item].qty += 1
+  // qty + 1;
+  if (cartItems[item].qty > 3) {
+    cartItems[item].qty = 3
+    alert('Maximum quantity per item is 3')
+  }
+  console.log(cartItems[item].qty)
   console.log(cartItems)
-  	// for (let i = 0; i < cartItems.length; i++) {
-  	// 	if (cartItems[i]._id === itemId) {
-  	// 		cartItems[i].qty = qty;
-    //     countTotal()
-    //     save()
-    //     getCartItems(); 
-    //     console.log(cartItems)
-  	// 		return;
-  	// 	}
-  	// }
+  save(); 
+  getCartItems(); 
 }
 
 function clear() {
@@ -113,14 +112,3 @@ function save() {
   // function to save changes to localStorage
   localStorage.setItem("cart", JSON.stringify(cartItems));
 }
-
-// function updateCartItems(product) { // 2
-// 	for (let i = 0; i < cartItems.length; i++) {
-// 		if (cartItems[i].id == product.id) {
-// 			cartItems[i].count += 1;
-// 			cartItems[i].price = cartItems[i].basePrice * cartItems[i].count;
-// 			return;
-// 		}
-// 	}
-// 	cartItems.push(product);
-// }

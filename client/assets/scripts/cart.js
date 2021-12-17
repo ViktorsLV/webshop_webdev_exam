@@ -19,15 +19,12 @@ const countTotal = function () {
 
 function getCartItems() {
   if (cartItems.length > 0) {
+    console.log(cartItems)
     const items = cartItems.map((product) => {
-    // cartItems.map((product) => {
       let options = [...Array(product.countInStock).keys()].map((o) => {
         return `<option value="${o + 1}">${o + 1}</option>`;
       });
 
-      // remove.addEventListener('click', () => {removeItem(product.price)});
-      // mapping through array with numbers (countInStock) and adding it into option dropdown
-      // parentElement.innerHTML += `
       return `
 				<div class="flex-row cart-items">
 						<div class="cart-img">
@@ -47,17 +44,11 @@ function getCartItems() {
 								</form>
 						</div>
 							<div id="div">
-								<button class="cart-btn btn submit-btn" id="remove"">Remove item</button>	
+								<button class="cart-btn btn submit-btn" id="remove" onClick="removeItem('${product._id}')">Remove item</button>	
 							</div>
 						</div>
 						`;
     });
-    // const div = document.getElementById('div');
-    // const btn = document.createElement('button');
-    // btn.className = 'submit-btn';
-    // btn.innerHTML = `Remove item`
-    // btn.onClick = () => { console.log(product.name)}
-    // div.appendChild(btn);
     parentElement.innerHTML = items.join("");
     document.querySelector(".checkout").classList.remove("d-none");
     document.querySelector(".cart-checkout").classList.remove("d-none");
@@ -65,9 +56,7 @@ function getCartItems() {
   } else {
 		document.querySelector(".checkout").classList.add("d-none");
     document.querySelector(".cart-checkout").classList.add("d-none");
-    parentElement.innerHTML =
-      '<h4 class="empty">Your shopping cart is empty</h4>';
-    // cartTotal.innerHTML = '';
+    parentElement.innerHTML = '<h4 class="empty">Your shopping cart is empty</h4>';
   }
 };
 getCartItems();
@@ -75,7 +64,12 @@ getCartItems();
 clearCart.addEventListener("click", clear);
 
 function removeItem(itemId) {
-  console.log(itemId);
+  // looking for Id which matches and returning new array
+  const items = cartItems.filter(item => item._id !== itemId);
+  // assigning new array to cartItems 
+  cartItems = items // assign new array
+  save() // changing localStorage to filtered array
+  getCartItems() // refresh items
 }
 
 function clear() {
@@ -83,12 +77,10 @@ function clear() {
 	localStorage.removeItem("cart");
   getCartItems();
 }
-// const removeItem = (itemId) => {
-// 	console.log(itemId)
-// const items = cartItems.filter(item => item._id === itemId);
-// localStorage.setItem('cart', JSON.stringify(items));
-// getCartItems()
-// }
+
+function save() { // function to save changes to localStorage
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+}
 
 // function updateCartItems(product) { // 2
 // 	for (let i = 0; i < cartItems.length; i++) {

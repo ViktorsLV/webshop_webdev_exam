@@ -26,12 +26,10 @@ function countTotal() {
 
 function getCartItems() {
   if (cartItems.length > 0) {
-    console.log(cartItems);
     const items = cartItems.map((product) => {
       let options = [...Array(product.countInStock).keys()].map((o) => {
-        return `<option value="${o + 1}">${o + 1}</option>`;
+        return `<option value="${o + 1}">${o + 1}</option>`; // show only the available quantity as select
       });
-
       return `
 				<div class="flex-row cart-items">
           <div class="cart-img">
@@ -83,17 +81,24 @@ function removeItem(itemId) {
 }
 
 function changeQty(qty, itemId) {
-  // const item = cartItems.filter((item) => item._id === itemId);
-  	for (let i = 0; i < cartItems.length; i++) {
-  		if (cartItems[i]._id === itemId) {
-  			cartItems[i].qty = Number(qty);
-        countTotal()
-        save()
-        getCartItems(); 
-        console.log(cartItems)
-  			return;
-  		}
-  	}
+  console.log(qty)
+  let item = cartItems.findIndex((item) => item._id === itemId);
+  cartItems[item].qty = qty;
+  // select.value = cartItems[item].qty
+  countTotal()
+  save()
+  getCartItems(); 
+  console.log(cartItems)
+  	// for (let i = 0; i < cartItems.length; i++) {
+  	// 	if (cartItems[i]._id === itemId) {
+  	// 		cartItems[i].qty = qty;
+    //     countTotal()
+    //     save()
+    //     getCartItems(); 
+    //     console.log(cartItems)
+  	// 		return;
+  	// 	}
+  	// }
 }
 
 function clear() {

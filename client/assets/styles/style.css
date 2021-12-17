@@ -458,6 +458,16 @@ div {
 
 /* CART PAGE END */
 
+/* COMPLETE */
+.complete {
+  text-align: center;
+}
+
+.complete img {
+  margin: 0 auto;
+  width: 20%;
+}
+
 /* FOOTER */
 .footer {
   text-align: center;

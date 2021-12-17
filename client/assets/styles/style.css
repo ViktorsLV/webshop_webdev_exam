@@ -321,7 +321,7 @@ div {
   color: var(--main-color);
 }
 .home-intro a {
-    width: 30%;
+  width: 30%;
 }
 .home-intro button {
   margin-top: 0.5vh;
@@ -463,6 +463,15 @@ main {
   .pc-hide {
     display: none;
   }
+  .home-intro {
+    padding-top: 25vw;
+    position: initial;
+    width: 70%;
+  }
+
+  .home-intro a {
+    width: 50%;
+  }
   .form-control {
     width: 80%;
   }
@@ -484,6 +493,12 @@ main {
 
   .pc-hide {
     display: block;
+  }
+
+  .home-intro {
+    padding-top: 30vw;
+    position: initial;
+    width: 70%;
   }
 
   .product {

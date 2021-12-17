@@ -43,19 +43,23 @@
         <li class="nav-item">
           <a href="shop.html" class="nav-link">Shop</a>
         </li>
-        <li class="nav-item auth">
-          <a href="cart.html" class="nav-link">Cart</a>
-        </li>
         <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="contact.html" class="nav-link nav-margin">Contact</a>
         </li>
-        <li class="nav-item guest nav-margin">
+        <li class="nav-item guest ">
           <a href="login.html" class="nav-link current">Log in</a>
         </li>
         <li class="nav-item guest">
-            <a href="register.html" class="nav-link">Register</a>
+          <a href="register.html" class="nav-link">Register</a>
         </li>
-        
+
+        <li class="nav-item auth">
+          <a href="cart.html" class="nav-link">Cart</a>
+        </li>
+        <li class="nav-item auth">
+          <a href="#" class="nav-link " id="logout">Log out</a>
+        </li>
+
       </ul>
 
     </nav>
@@ -65,37 +69,37 @@
         <div class="container">
           <h3 class="heading-center">Log in</h3>
 
-          
+
           <form id="login-form" class="form-control">
-              <div class="alert-success" id="alertSuccess"></div>
-              <div class="alert-error" id="alertError"></div>
-              <label>Email</label>
-              <input type="email" name="" id="loginEmail" placeholder="Your email" class="input-field">
+            <div class="alert-success" id="alertSuccess"></div>
+            <div class="alert-error" id="alertError"></div>
+            <label>Email</label>
+            <input type="email" name="" id="loginEmail" placeholder="Your email" class="input-field">
 
-              <label>Password</label>
-              <input type="password" name="" id="loginPassword" placeholder="Your password" class="input-field">
+            <label>Password</label>
+            <input type="password" name="" id="loginPassword" placeholder="Your password" class="input-field">
 
-              <!-- TODO: change cursor and btn disable if fields are not filled -->
-              <input type="submit" value="Send" id="loginButton" class="submit-btn">
+            <!-- TODO: change cursor and btn disable if fields are not filled -->
+            <input type="submit" value="Send" id="loginButton" class="submit-btn">
 
-              <div class="text-center">
-                <p>Don't have an account? <a href="register.html">Sign up</a></p>
-              </div>
+            <div class="text-center">
+              <p>Don't have an account? <a href="register.html">Sign up</a></p>
+            </div>
           </form>
         </div>
-      
+
       </section>
     </main>
 
 
-  <footer class="footer">
-    <p>Made with &#128151; by Viktors Cebotarjovs
-      <br />
-      Copyright &copy; <span id="copyright">
+    <footer class="footer">
+      <p>Made with &#128151; by Viktors Cebotarjovs
+        <br />
+        Copyright &copy; <span id="copyright">
           <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-      </span> | Icons by Font Awesome
-  </p>
-  </footer>
+        </span> | Icons by Font Awesome
+      </p>
+    </footer>
 </body>
 
 </html>

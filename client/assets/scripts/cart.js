@@ -49,11 +49,11 @@ function getCartItems() {
 				</div> `;
     });
     parentElement.innerHTML = items.join("");
-    document.querySelector(".checkout").classList.remove("d-none");
+    document.querySelector(".cart").classList.remove("d-none");
     document.querySelector(".cart-checkout").classList.remove("d-none");
     totalPrice.innerHTML = "$" + countTotal();
   } else {
-    document.querySelector(".checkout").classList.add("d-none");
+    document.querySelector(".cart").classList.add("d-none");
     document.querySelector(".cart-checkout").classList.add("d-none");
     clearCart.classList.add("d-none");
     parentElement.innerHTML =

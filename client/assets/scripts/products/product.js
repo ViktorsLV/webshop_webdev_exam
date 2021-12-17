@@ -85,7 +85,7 @@ async function fetchProducts() {
   }
 }
 
-window.load = fetchProducts();
+window.onload = fetchProducts();
 
 /* ADDING PRODUCTS TO CART */
 function addToCart(product) {

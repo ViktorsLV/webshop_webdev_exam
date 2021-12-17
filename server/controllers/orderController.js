@@ -14,7 +14,7 @@ const createOrder = async (req, res) => {
       user: req.user._id,
       shippingAddress,
       paymentMethod,
-      itemsPrice,
+      // itemsPrice,
       shippingPrice,
       totalPrice,
     });

@@ -149,6 +149,13 @@ div {
   display: flex;
   flex-direction: column;
 }
+.col-50 {
+  flex: 50%;
+}
+
+.card-details, .col-50 {
+  padding: 0 5px;
+}
 
 .between {
   justify-content: space-between;
@@ -419,7 +426,7 @@ div {
 /* SINGLE PRODUCT PAGE END*/
 
 /* CART PAGE */
-.checkout {
+.cart {
   display: flex;
 }
 .cart-items {
@@ -516,7 +523,7 @@ main {
     justify-content: center;
   }
 
-  .checkout {
+  .cart {
     display: flex;
     flex-direction: column;
   }

@@ -170,7 +170,16 @@ p, li, span, label, input, textarea, div {
     border: none;
 }
 
-.submit-btn:hover {
+.remove-btn {
+    color: #fff;
+    border: none;
+    background-color: var(--btn-color);
+    padding: 1%;
+    width: 130px;
+    text-align: center;
+}
+
+.submit-btn:hover, .remove-btn:hover {
     background-color: var(--btn-hover);
     cursor: pointer;
 } 
@@ -332,6 +341,7 @@ p, li, span, label, input, textarea, div {
 .cart-items {
     border-bottom: 1px solid var(--border-color);
     margin: 1.5vw 5vw 0 0;
+    justify-content: space-between;
 }
 .cart-list {
     flex: 6;
@@ -341,7 +351,7 @@ p, li, span, label, input, textarea, div {
 }
 .cart-items div {
     width: 15%;
-    margin: 0 0.5vw;
+    margin: 0 1vw 0 0;
 }
 .cart-img img {
     width: 100%;
@@ -350,7 +360,9 @@ p, li, span, label, input, textarea, div {
     margin-top: 0;
     margin-bottom: 0;
 }
-
+.cart-btn {
+    padding: 8%;
+}
 
 /* CART PAGE END */
 

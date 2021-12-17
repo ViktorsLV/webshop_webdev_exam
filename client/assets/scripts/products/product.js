@@ -42,6 +42,7 @@ async function fetchProducts() {
     if (response.status >= 200) {
       const product = await response.json();
       console.log(product);
+      // <div class="secondary">${product.category}</div>
       productBox.innerHTML += `
         <div class="product-image">
           <img src="../${product.image}" alt="${product.name}">
@@ -49,10 +50,9 @@ async function fetchProducts() {
 
         <div class="product-details flex-col">
             <h3 class="no-spacing">${product.name}</h3>
-            <h4 class="no-spacing">$ ${product.price}</h4>
-            <div class="mt-2">
-              ${product.description}
-            </div>
+            <h4 class="no-spacing secondary">${product.brand}</h4>
+            <h5 class="">$ ${product.price}</h5>
+            <div class="">${product.description}</div>
         </div>
 
         <div class="product-checkout flex-col">

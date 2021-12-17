@@ -99,6 +99,6 @@ function addToCart(product) {
   const text = "Product added!"
   showAlert(text, alertSuccess)
   
-  cartItems.push(product);
+  cartItems.push({...product, qty: 1}); // add 1 item to cart by default
   localStorage.setItem('cart', JSON.stringify(cartItems));
 }

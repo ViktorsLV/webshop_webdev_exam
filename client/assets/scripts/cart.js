@@ -19,11 +19,8 @@ const showAlert = (msg, el) => {
   }, 5000);
 };
 
-const countTotal = function () {
-  let total = 0;
-  cartItems.forEach((item) => {
-    total += item.price;
-  });
+function countTotal() {
+  const total = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)
   return total;
 };
 
@@ -48,7 +45,7 @@ function getCartItems() {
           </div>
           <div class="cart-qty">
               <form action="">
-                  <select name="cars" id="select">
+                  <select name="qty" id="select" onchange="changeQty(this.value, '${product._id}')">
                     ${options}
                   </select>
               </form>
@@ -83,6 +80,20 @@ function removeItem(itemId) {
   getCartItems(); // refresh items
   const text = "Item removed!"
   showAlert(text, alertSuccess)
+}
+
+function changeQty(qty, itemId) {
+  // const item = cartItems.filter((item) => item._id === itemId);
+  	for (let i = 0; i < cartItems.length; i++) {
+  		if (cartItems[i]._id === itemId) {
+  			cartItems[i].qty = Number(qty);
+        countTotal()
+        save()
+        getCartItems(); 
+        console.log(cartItems)
+  			return;
+  		}
+  	}
 }
 
 function clear() {

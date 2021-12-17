@@ -186,7 +186,7 @@ p, li, span, label, input, textarea, div {
 
 /* ALERTS */
 
-.alert-success, .alert-error {
+.alert-success, .alert-error, .alert-warning {
     text-align: center;
     padding: 1%;
     background: #569b56;
@@ -200,6 +200,15 @@ p, li, span, label, input, textarea, div {
     background: #d82f2f;
 }
 
+.alert-warning {
+    background: #f1a054;
+}
+
+.alert-small {
+    width: max-content;
+    float: right;
+    margin-top: 2vw;
+}
 /* BUTTON STYLING */
 .btn {
     background-color: var(--btn-color);

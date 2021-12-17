@@ -3,11 +3,21 @@ const select = document.querySelector("#select");
 const remove = document.querySelector("#remove");
 const clearCart = document.querySelector("#clearCart");
 const totalPrice = document.querySelector("#totalPrice");
+const alertSuccess = document.querySelector('#alertSuccess');
 
 let cartItems = JSON.parse(localStorage.getItem("cart"));
 if (!cartItems) {
   cartItems = [];
 }
+
+// custom function to show alert
+const showAlert = (msg, el) => {
+  el.style.display = "block"; // change alert visibility on HTML page
+  el.innerHTML = `${msg}`; // add text for alert
+  setTimeout(function () {
+    el.parentNode.removeChild(el); // remove alert from form after 5 seconds
+  }, 5000);
+};
 
 const countTotal = function () {
   let total = 0;
@@ -71,12 +81,16 @@ function removeItem(itemId) {
   cartItems = items; // assign new array
   save(); // changing localStorage to filtered array
   getCartItems(); // refresh items
+  const text = "Item removed!"
+  showAlert(text, alertSuccess)
 }
 
 function clear() {
   cartItems = [];
   localStorage.removeItem("cart");
   getCartItems();
+  const text = "Cart cleared!"
+  showAlert(text, alertSuccess)
 }
 
 function save() {

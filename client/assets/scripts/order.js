@@ -51,7 +51,7 @@ async function getOrder() {
               <img src="../${r.image}" alt="${r.name}">
             </div>
             <div class="order-title">
-                <h5 >${r.name}</h5>
+                <h5>${r.name}</h5>
             </div>
             <div class="order-price">
                 <p >x${r.qty} x $${r.price} = $${r.price * r.qty}</p>

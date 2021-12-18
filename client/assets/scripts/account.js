@@ -77,8 +77,8 @@ async function getMyOrders(data) {
           orderDetails.innerHTML += `
             <tr>
               <td>${order._id}</td>
-              <td>${(order.createdAt).substring(0, 10)}</td>
-              <td>${order.isDelivered ? "Yes" : "No" }</td>
+              <td class="mobile-hide">${(order.createdAt).substring(0, 10)}</td>
+              <td class="mobile-hide">${order.isDelivered ? "Yes" : "No" }</td>
               <td class="button-detail"><a href="../pages/order.html?${order._id}"><button class="btn submit-btn details">DETAILS <i class="fas fa-external-link-square-alt"></i></button></a></td>
             </tr>  
           `;

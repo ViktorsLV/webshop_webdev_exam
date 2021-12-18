@@ -13,7 +13,9 @@
     --preview-bg: rgb(25, 39, 52, 0.8);
     --preview-shadow: #0d2c4c;
 
+    --nav-active: #17a2b8;
     --btn-color: #0d2c4c;
     --btn-hover: #174573;
+    --btn-delete: rgb(167, 33, 33);
     --highlight: #17a2b8;
 }

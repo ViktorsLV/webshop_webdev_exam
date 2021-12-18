@@ -62,7 +62,7 @@ if (!token) {
 function leave() {
     if (token) {
         localStorage.clear(); // logout user and clear the cart
-        location.href = 'http://127.0.0.1:5500/client/index.html';
+        location.replace('http://127.0.0.1:5500/client/index.html');
     }
 }
 

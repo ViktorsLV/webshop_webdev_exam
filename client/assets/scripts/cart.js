@@ -44,7 +44,7 @@ function getCartItems() {
             <button class="button-plus pointer" onClick="plus('${product._id}')">+</button>
           </div>
           <div id="div">
-            <button class="cart-btn remove-btn" id="remove" onClick="removeItem('${product._id}')">Remove item</button>	
+            <button class="cart-btn remove-btn" id="remove" onClick="removeItem('${product._id}')"><i class="fas fa-trash"></i> Remove item</button>	
           </div>
 				</div> `;
     });

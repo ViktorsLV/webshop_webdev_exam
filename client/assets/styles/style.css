@@ -574,6 +574,9 @@ main {
   .pc-hide {
     display: none;
   }
+  .order-items {
+    width: 100%;
+  }
   .home-intro {
     padding-top: 25vw;
     position: initial;
@@ -598,6 +601,9 @@ main {
 }
 
 @media screen and (max-width: 768px) {
+  .container {
+    margin-top: 15vw;
+  }
   .mobile-hide {
     display: none;
   }
@@ -628,7 +634,15 @@ main {
   .cart-list {
     margin-top: 4vw;
   }
-
+  .order-items {
+    justify-content: flex-start;
+  }
+  .order-img {
+    width: 40%;
+  }
+  .order-price {
+    display: none;
+  }
   /* HAMBURGER STYLING and NAVIGATION*/
   .menu {
     display: flex;

@@ -22,16 +22,18 @@ const showAlert = (msg, el) => {
   }, 5000);
 };
 
+const reqHeaders = {
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
+  Authorization: `Bearer ${currentUser}`,
+}
+
 async function getMe(data) {
   try {
     console.log(data);
     const response = await fetch(`${baseUrl}/users/me`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${currentUser}`,
-      },
+      headers: reqHeaders 
     });
     if (response.status >= 400) {
       const text = "Something went wrong. Please, try again...";
@@ -51,16 +53,36 @@ async function getMe(data) {
   }
 }
 
+async function deleteMe(data) {
+  try {
+    console.log(data);
+    const response = await fetch(`${baseUrl}/users/deleteMe`, {
+      method: "DELETE",
+      headers: reqHeaders 
+    });
+    if (response.status >= 400) {
+      const text = "User not found";
+      showAlert(text, alertError);
+    }
+    if (response.status === 200) {
+    
+      const result = await response.json();
+      console.log(result);
+      localStorage.clear(); // logout user and clear the cart
+      location.replace('http://127.0.0.1:5500/client/index.html');
+    }
+  } catch (error) {
+    // handle server down error
+    alert(error);
+  }
+}
+
 async function getMyOrders(data) {
   try {
     console.log(data);
     const response = await fetch(`${baseUrl}/orders/myOrders`, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${currentUser}`,
-      },
+      headers: reqHeaders 
     });
     if (response.status >= 400) {
       const text = "Something went wrong. Please, try again...";
@@ -101,11 +123,7 @@ async function editUser(data) {
   try {
     const response = await fetch(`${baseUrl}/users/me/update`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${currentUser}`,
-      },
+      headers: reqHeaders,
       body: JSON.stringify(data),
     });
     if (response.status >= 400) {
@@ -115,6 +133,8 @@ async function editUser(data) {
     if (response.status === 200) {
       const result = await response.json();
       console.log(result);
+      const text = "Profile updated!";
+      showAlert(text, alertSuccess);
 
     }
   } catch (error) {

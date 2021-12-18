@@ -15,6 +15,7 @@
 
   --nav-active: #17a2b8;
   --btn-color: #bbb399;
+  --btn-delete: rgb(167, 33, 33);
   --btn-hover: #aca286;
 
   --highlight: #17a2b8;
@@ -223,6 +224,21 @@ div {
   padding: 1%;
   width: 130px;
   text-align: center;
+}
+
+.delete-btn {
+  color: #fff;
+  border: none;
+  background-color: var(--btn-delete);
+  padding: 5%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .submit-btn:hover,

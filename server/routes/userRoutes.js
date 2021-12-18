@@ -12,5 +12,7 @@ router.get("/:id", auth, userController.getUserById);
 
 router.put("/me/update", auth, userController.updateMe);
 
+router.delete("/me/delete", auth, userController.deleteMe);
+
 module.exports = router;
 

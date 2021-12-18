@@ -49,6 +49,8 @@ getUserById = async (req, res) => {
   }
 };
 
+// @route   GET /api/users/me
+// @access  Private - Get currently logged in user information 
 getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user._id); // takes currently logged in user id 
@@ -67,6 +69,26 @@ getMe = async (req, res) => {
   }
 };
 
+// @route   GET /api/users/deleteMe
+// @access  Private - Delete currently logged in user information 
+deleteMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id); 
+
+    if (user) {
+      await user.remove()
+      res.status(200).json({message: "User removed successfully"});
+
+    } else {
+      res.status(404).send("User Not Found");
+    }
+  } catch (err) {
+    res.status(500).send("Something went wrong");
+  }
+};
+
+// @route   GET /api/users/updateMe
+// @access  Private - Update currently logged in user information 
 updateMe = async (req, res) => {
   try {
     const user = await User.findById(req.user._id); // takes currently logged in user id 
@@ -98,5 +120,6 @@ module.exports = {
   getUsersCount,
   getUserById,
   updateMe,
+  deleteMe,
   getMe
 };

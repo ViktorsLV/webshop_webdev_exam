@@ -7,6 +7,8 @@ const firstName = document.querySelector("#firstName");
 const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 
+
+const orderCell = document.querySelector("#orderCell");
 const orderDetails = document.querySelector("#orderDetails");
 const alertError = document.querySelector("#alertError");
 const alertSuccess = document.querySelector("#alertSuccess");
@@ -70,17 +72,24 @@ async function getMyOrders(data) {
       // 201 - created
       const result = await response.json();
       console.log(result)
-      result.forEach((order) => {
-        orderDetails.innerHTML += `
-          <tr>
-            <td>${order._id}</td>
-            <td>${(order.createdAt).substring(0, 10)}</td>
-            <td>${order.isDelivered ? "Yes" : "No" }</td>
-            <td class="button-detail"><a href="../pages/order.html?${order._id}"><button class="btn submit-btn details">DETAILS</button></a></td>
-          </tr>  
+      if (result.length > 0) {
+        result.forEach((order) => {
+          orderDetails.innerHTML += `
+            <tr>
+              <td>${order._id}</td>
+              <td>${(order.createdAt).substring(0, 10)}</td>
+              <td>${order.isDelivered ? "Yes" : "No" }</td>
+              <td class="button-detail"><a href="../pages/order.html?${order._id}"><button class="btn submit-btn details">DETAILS</button></a></td>
+            </tr>  
+          `;
+        });
+      } else {
+        orderDetails.style.display = 'none';
+        orderCell.innerHTML += `
+            <h4>You have no registered orders :(</h4>
+            <a href="../pages/shop.html"><button class="btn submit-btn details">GO TO SHOP</button></a>
         `;
-      });
-      // window.location.replace("http://127.0.0.1:5500/client/assets/pages/complete.html");
+      }
     }
   } catch (error) {
     // handle server down error

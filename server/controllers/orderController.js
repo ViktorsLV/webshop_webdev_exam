@@ -57,17 +57,21 @@ const getMyOrders = async (req, res) => {
 // @route   GET /api/orders/:id/pay
 // @access  Private
 const updateOrderToPaid = async (req, res) => {
-  const order = await Order.findById(req.params.id);
-
-  if (order) {
-    order.isPaid = true; // set order isPaid value to be true
-    order.paidAt = Date.now();
-
-    const updatedOrder = await order.save();
-
-    res.status(200).json(updatedOrder);
-  } else {
-    res.status(404).json("Order not found");
+  try {
+    const order = await Order.findById(req.params.id);
+  
+    if (order) {
+      order.isPaid = true; // set order isPaid value to be true
+      order.paidAt = Date.now();
+  
+      const updatedOrder = await order.save();
+  
+      res.status(200).json(updatedOrder);
+    } else {
+      res.status(404).json("Order not found");
+    }
+  } catch (error) {
+    res.status(500).json("Something went wrong");    
   }
 };
 

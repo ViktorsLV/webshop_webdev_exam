@@ -38,8 +38,11 @@ async function completeOrder(data) {
     }
     if (response.status === 201) { // 201 - created
       const result = await response.json();
-      console.log(result);
-      window.location.replace("http://127.0.0.1:5500/client/assets/pages/complete.html");
+      const orderRef = result._id
+
+      orderPay(orderRef)
+      window.location.replace(`http://127.0.0.1:5500/client/assets/pages/complete.html?${orderRef}`);
+
       cartItems = [];
       localStorage.removeItem("cart");
     }
@@ -47,6 +50,25 @@ async function completeOrder(data) {
     // handle server down error
     alert(error);
   }
+}
+
+async function orderPay(orderRef) {
+    const response = await fetch(`${baseUrl}/orders/${orderRef}/pay`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${currentUser}`,
+      }
+    });
+    if (response.status >= 400) {
+      const text = "Something went wrong. Please, try again...";
+      showAlert(text, alertError);
+    }
+    if (response.status === 200) {
+      const result = await response.json();
+      console.log(result)
+    }
 }
 
 // add handler on login form button click

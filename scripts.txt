@@ -1,0 +1,9 @@
+Scripts to run the app as intended: 
+
+# npm i 
+# add .env configuration -> copy variables from .env.example
+
+# npm run data:import 
+# npm run server
+
+To open client pages -> Open html file in the browser with LiveServer or manually

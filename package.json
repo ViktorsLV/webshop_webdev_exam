@@ -5,8 +5,6 @@
   "scripts": {
     "start": "node server/index",
     "server": "nodemon server/index",
-    "client": "yarn --cwd frontend start",
-    "dev": "concurrently \"yarn server\" \"yarn client\" ",
     "data:import": "node server/data/seeder",
     "data:destroy": "node server/data/seeder -d"
   },

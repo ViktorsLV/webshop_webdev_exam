@@ -1,7 +1,7 @@
 /* variables */
 /* for switching themes */
 :root {
-  --main-color: #cccccc;
+  --main-color: #bbbbbb;
   --secondary-color: rgb(240, 240, 240);
 
   --border-color: #abaaaa;
@@ -14,7 +14,7 @@
   --preview-shadow: #d8d1ba;
 
   --nav-active: #17a2b8;
-  --btn-color: #bbb399;
+  --btn-color: #b6ac8c;
   --btn-delete: rgb(167, 33, 33);
   --btn-hover: #aca286;
 
@@ -109,7 +109,9 @@ div {
 .d-none {
   display: none;
 }
-
+.highlight {
+  color: var(--highlight);
+}
 .secondary {
   font-weight: 100;
   color: var(--secondary-text);

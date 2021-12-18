@@ -3,6 +3,9 @@ const localStorage = window.localStorage;
 const currentUser = localStorage.getItem("token");
 
 const orderRef = document.querySelector("#orderRef");
+const orderShipping = document.querySelector("#orderShipping");
+const orderPayment = document.querySelector("#orderPayment");
+const orderItems = document.querySelector("#orderItems");
 
 const orderId = location.href.split("?")[1];
 
@@ -23,17 +26,36 @@ async function getOrder() {
       `
     }
     if (response.status === 200) {
-      const result = await response.json();
-      console.log(result)
-      orderRef.innerHTML += orderId
-        orderDetails.innerHTML += `
-          <tr>
-            <td>${result._id}</td>
-            <td>${(result.createdAt).substring(0, 10)}</td>
-            <td>${result.isDelivered ? "Yes" : "No" }</td>
-            <td class="button-detail"><a href="../pages/order.html?${result._id}"><button class="btn submit-btn details">DETAILS</button></a></td>
-          </tr>  
+      const order = await response.json();
+      console.log(order)
+
+      orderShipping.innerHTML += `
+        <h4>Shipping Details:</h4>
+        <p>Email: ${order.user.email}</p>
+        <p>Address: ${order.shippingAddress.address}, ${order.shippingAddress.city}, ${order.shippingAddress.country}</p>
+      `
+      orderPayment.innerHTML += `
+        <h4>Payment Details:</h4>
+        <p>Total Price:$ ${order.totalPrice}</p>
+        <p>Payment Method: ${order.paymentMethod}</p>
+      `
+      order.orderItems.forEach(r => {
+        orderItems.innerHTML += `
+          <h4>Order Items:</h4>
+          <div class="flex-row order-items">
+            <div class="order-img">
+              <img src="../${r.image}" alt="${r.name}">
+            </div>
+            <div class="order-title">
+                <h5 >${r.name}</h5>
+            </div>
+            <div class="order-price">
+                <p >x${r.qty} x $${r.price} = $${r.price * r.qty}</p>
+            </div>
+          </div>
+          
         `;
+    });
     }
   } catch (error) {
     // handle server down error

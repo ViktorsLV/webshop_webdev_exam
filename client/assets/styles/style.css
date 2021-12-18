@@ -465,6 +465,32 @@ div {
 
 /* CART PAGE END */
 
+/* ORDER HISTORY PAGE */
+.order-items {
+  border-bottom: 1px solid var(--border-color);
+  margin: 1.5vw 5vw 0 0;
+  justify-content: space-between;
+  width: 80%;
+}
+.order-img{
+  width: 10%;
+  margin: 0 1vw 0 0;
+}
+.order-img img {
+  width: 100%;
+}
+.order-title,
+.order-price {
+  width: 35%;
+}
+.order-title h5,
+.order-price p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ORDER HISTORY PAGE END*/
+
 /* COMPLETE */
 .complete {
   text-align: center;

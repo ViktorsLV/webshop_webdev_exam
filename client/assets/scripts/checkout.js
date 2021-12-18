@@ -87,6 +87,7 @@ submitBtn.addEventListener("click", (e) => {
     items.push({ 
       name: cartItems[i].name,
       qty: cartItems[i].qty,
+      image: cartItems[i].image || '',
       price: cartItems[i].price,
       product: cartItems[i]._id,
     })
@@ -99,7 +100,7 @@ submitBtn.addEventListener("click", (e) => {
         postalCode: zip.value,
         country: country.value,
       },
-      paymentMethod: "card",
+      paymentMethod: "Card",
       totalPrice: total,
     };
     completeOrder(data);

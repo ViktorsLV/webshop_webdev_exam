@@ -39,7 +39,9 @@ async function completeOrder(data) {
     if (response.status === 201) { // 201 - created
       const result = await response.json();
       console.log(result);
-      location.href = "http://127.0.0.1:5500/client/assets/pages/complete.html";
+      window.location.replace("http://127.0.0.1:5500/client/assets/pages/complete.html");
+      cartItems = [];
+      localStorage.removeItem("cart");
     }
   } catch (error) {
     // handle server down error

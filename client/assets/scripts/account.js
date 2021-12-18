@@ -7,9 +7,14 @@ const firstName = document.querySelector("#firstName");
 const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 
-
 const orderCell = document.querySelector("#orderCell");
 const orderDetails = document.querySelector("#orderDetails");
+
+const confirmDelete = document.querySelector("#confirmDelete");
+const deleteModal = document.querySelector("#deleteModal");
+const deleteAccountBtn = document.querySelector("#deleteAccountBtn");
+var span = document.getElementsByClassName("close")[0];
+
 const alertError = document.querySelector("#alertError");
 const alertSuccess = document.querySelector("#alertSuccess");
 
@@ -28,9 +33,8 @@ const reqHeaders = {
   Authorization: `Bearer ${currentUser}`,
 }
 
-async function getMe(data) {
+async function getMe() {
   try {
-    console.log(data);
     const response = await fetch(`${baseUrl}/users/me`, {
       method: "GET",
       headers: reqHeaders 
@@ -53,10 +57,9 @@ async function getMe(data) {
   }
 }
 
-async function deleteMe(data) {
+async function deleteMe() {
   try {
-    console.log(data);
-    const response = await fetch(`${baseUrl}/users/deleteMe`, {
+    const response = await fetch(`${baseUrl}/users/me/delete`, {
       method: "DELETE",
       headers: reqHeaders 
     });
@@ -77,9 +80,8 @@ async function deleteMe(data) {
   }
 }
 
-async function getMyOrders(data) {
+async function getMyOrders() {
   try {
-    console.log(data);
     const response = await fetch(`${baseUrl}/orders/myOrders`, {
       method: "GET",
       headers: reqHeaders 
@@ -156,6 +158,25 @@ updateBtn.addEventListener("click", (e) => {
     editUser(data);
   }
 });
+
+deleteAccountBtn.addEventListener("click", () => {
+  deleteModal.style.display = "block";
+})
+
+confirmDelete.addEventListener("click", () => {
+  deleteMe()
+})
+
+span.onclick = function() {
+  deleteModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the deleteModal, close it
+window.onclick = function(event) {
+  if (event.target == deleteModal) {
+    deleteModal.style.display = "none";
+  }
+}
 
 getMe();
 getMyOrders();

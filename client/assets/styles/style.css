@@ -211,19 +211,24 @@ div {
 .submit-btn {
   margin-top: 10px;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px;
   color: #fff;
-  background-color: var(--btn-color);
-  border: none;
 }
 
 .remove-btn {
   color: #fff;
-  border: none;
-  background-color: var(--btn-color);
   padding: 1%;
   width: 130px;
   text-align: center;
+}
+
+.confirm-btn {
+  color: #fff;
+  padding: 2%;
+  width: max-content;
+  text-align: center;
+  margin-top: 2vw;
+  font-weight: bold;
 }
 
 .delete-btn {
@@ -241,12 +246,23 @@ div {
   opacity: 0.8;
 }
 
+.submit-btn,
+.remove-btn,
+.confirm-btn {
+  border: none;
+  background-color: var(--btn-color);
+}
+
 .submit-btn:hover,
-.remove-btn:hover {
+.remove-btn:hover,
+.confirm-btn:hover {
   background-color: var(--btn-hover);
   cursor: pointer;
 }
 
+.underline {
+  text-decoration: underline;
+}
 /* ALERTS */
 
 .alert-success,
@@ -537,6 +553,38 @@ div {
 /* COMPLETE END */
 
 /* ACCOUNT PAGE */
+.modal {
+  display: none; /* hide modal by default */
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7); 
+}
+.modal-content {
+  background-color: white;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 10px 20px;
+  border-radius: 3px;
+  width: 40%; 
+}
+/* The Close Button */
+.close {
+  color: var(--highlight);
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .order-history {
   padding-left: 3vw;
 }

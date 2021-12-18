@@ -149,11 +149,18 @@ div {
   display: flex;
   flex-direction: column;
 }
+.col-75 {
+  flex: 75%;
+}
 .col-50 {
   flex: 50%;
 }
+.col-25 {
+  flex: 25%;
+}
 
-.card-details, .col-50 {
+.card-details,
+.col-50 {
   padding: 0 5px;
 }
 
@@ -467,6 +474,29 @@ div {
   margin: 0 auto;
   width: 20%;
 }
+/* COMPLETE END */
+
+/* ACCOUNT PAGE */
+.order-history {
+  padding-left: 3vw;
+}
+.full {
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  text-align: left;
+  padding: 8px;
+}
+table {
+  width: 100%;
+}
+td {
+  background-color: var(--main-color);
+}
+/* ACCOUNT PAGE END */
 
 /* FOOTER */
 .footer {

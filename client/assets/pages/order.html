@@ -14,7 +14,7 @@
     <link id="theme-style" rel="stylesheet" href="">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
     <script src="../scripts/main.js" defer></script>
-    <script src="../scripts/account.js" defer></script>
+    <script src="../scripts/order.js" defer></script>
     <title>Your Account | Webshop</title>
 </head>
 
@@ -67,32 +67,13 @@
         </nav>
 
         <div class="container">
-            <h1 class="button-plus">My Account</h1>
+            <a href="account.html" class="mt-2"><button class="mt-2 remove-btn">BACK</button></a>
+            <h1 class="button-plus">Order Details</h1>
 
             <div class="flex-row">
-                <div class="flex-col col-25">
+                <div class="flex-col full">
 
-                    <h4>Account Details</h4>
-                    <div class="" id="accountDetails">
-                        <form id="account-form" class="form-control full">
-                            <div class="alert-success" id="alertSuccess"></div>
-                            <div class="alert-error" id="alertError"></div>
-                            <label>First Name</label>
-                            <input class="input-field" type="text" name="firstName" id="firstName" required>
-
-                            <label>Last Name</label>
-                            <input class="input-field" type="text" name="lastName" id="lastName" required>
-
-                            <label>Email</label>
-                            <input type="email" class="input-field" name="email" id="email" required>
-
-                            <input type="submit" value="UPDATE DETAILS" id="updateBtn" class="submit-btn">
-                        </form>
-                    </div>
-                </div>
-                <div class="flex-col col-75 order-history">
-
-                    <h4>Order History</h4>
+                    <h4 id="orderRef">Order u6423764</h4>
                     <div class="">
                         <table id="orderDetails">
                             <tr>

@@ -1,5 +1,5 @@
 const baseUrl = "http://localhost:5000/api";
-const localStorage = window.localStorage; /* TODO: use?  */
+const localStorage = window.localStorage; 
 
 /* REGISTERING USER */
 const productImg = document.querySelector("#productImg");

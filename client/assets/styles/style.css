@@ -494,7 +494,20 @@ table {
   width: 100%;
 }
 td {
-  background-color: var(--main-color);
+  background-color: rgb(223, 223, 223);
+}
+
+tr:not(first-child):hover {
+  opacity: 0.8;
+}
+.button-detail {
+  margin: 0 auto;
+  text-align: center;
+}
+.details {
+  padding: 10px;
+  margin: 0 auto;
+  color: white;
 }
 /* ACCOUNT PAGE END */
 

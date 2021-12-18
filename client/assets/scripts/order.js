@@ -3,6 +3,7 @@ const localStorage = window.localStorage;
 const currentUser = localStorage.getItem("token");
 
 const orderRef = document.querySelector("#orderRef");
+const orderCount = document.querySelector("#orderCount");
 const orderShipping = document.querySelector("#orderShipping");
 const orderPayment = document.querySelector("#orderPayment");
 const orderItems = document.querySelector("#orderItems");
@@ -29,6 +30,8 @@ async function getOrder() {
       const order = await response.json();
       console.log(order)
 
+      orderRef.innerHTML += orderId
+
       orderShipping.innerHTML += `
         <h4>Shipping Details:</h4>
         <p>Email: ${order.user.email}</p>
@@ -36,12 +39,13 @@ async function getOrder() {
       `
       orderPayment.innerHTML += `
         <h4>Payment Details:</h4>
-        <p>Total Price:$ ${order.totalPrice}</p>
+        <p>Total Price: $${order.totalPrice}</p>
         <p>Payment Method: ${order.paymentMethod}</p>
-      `
+        `
+      orderCount.innerHTML += `(${order.orderItems.length})`
+
       order.orderItems.forEach(r => {
         orderItems.innerHTML += `
-          <h4>Order Items:</h4>
           <div class="flex-row order-items">
             <div class="order-img">
               <img src="../${r.image}" alt="${r.name}">
@@ -53,7 +57,6 @@ async function getOrder() {
                 <p >x${r.qty} x $${r.price} = $${r.price * r.qty}</p>
             </div>
           </div>
-          
         `;
     });
     }

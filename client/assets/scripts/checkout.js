@@ -9,6 +9,8 @@ const city = document.querySelector("#city");
 const zip = document.querySelector("#zip");
 const alertError = document.querySelector("#alertError");
 
+let cartItems = JSON.parse(localStorage.getItem("cart"));
+
 // custom function to show alert
 const showAlert = (msg, el) => {
   el.style.display = "block"; // change alert visibility on HTML page
@@ -20,7 +22,7 @@ const showAlert = (msg, el) => {
 
 async function completeOrder(data) {
   try {
-    // console.log(data)
+    console.log(data)
     const response = await fetch(`${baseUrl}/orders`, {
       method: "POST",
       headers: {
@@ -54,24 +56,27 @@ submitBtn.addEventListener("click", (e) => {
     const text = "Required fields must be filled!";
     showAlert(text, alertError);
   } else {
+    const total = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)
+
+    const items = [];
+    for (let i = 0; i < cartItems.length; i++) {
+    items.push({ 
+      name: cartItems[i].name,
+      qty: cartItems[i].qty,
+      price: cartItems[i].price,
+      product: cartItems[i]._id,
+    })
+  }
     const data = {
-      orderItems: [
-        {
-          name: "XDDDDDDDDDDD",
-          qty: "1",
-          image: "/images/airpods.jpg",
-          price: "89.99",
-          product: "61b74aa992f1a3a426e14e42",
-        },
-      ],
+      orderItems: items,
       shippingAddress: {
-        address: "Jelgavas 4",
-        city: "Jurmala",
-        postalCode: "2010",
-        country: "Latvia",
+        address: address.value,
+        city: city.value,
+        postalCode: zip.value,
+        country: country.value,
       },
-      paymentMethod: "visa",
-      totalPrice: "89.99",
+      paymentMethod: "card",
+      totalPrice: total,
     };
     completeOrder(data);
   }

@@ -3,7 +3,7 @@ const { Order } = require("../models/orderModel");
 // @route   POST /api/orders
 // @access  Private
 const createOrder = async (req, res) => {
-  const { orderItems, shippingAddress, paymentMethod, itemsPrice, shippingPrice, totalPrice } = req.body;
+  const { orderItems, shippingAddress, paymentMethod, shippingPrice, totalPrice } = req.body;
 
   if (orderItems && orderItems.length === 0) {
     res.status(400).json("No items added");

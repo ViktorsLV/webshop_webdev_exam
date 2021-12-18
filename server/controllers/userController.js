@@ -67,9 +67,36 @@ getMe = async (req, res) => {
   }
 };
 
+updateMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id); // takes currently logged in user id 
+
+    if (user) {
+      user.firstName = req.body.firstName || user.firstName
+      user.lastName = req.body.lastName || user.lastName
+      user.email = req.body.email || user.email
+
+      const updatedUser = await user.save()
+
+      res.status(200).json({
+        id: updatedUser._id,
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+        email: updatedUser.email,
+      });
+
+    } else {
+      res.status(404).send("User Not Found");
+    }
+  } catch (err) {
+    res.status(500).send("Something went wrong");
+  }
+}
+
 module.exports = {
   getAllUsers,
   getUsersCount,
   getUserById,
+  updateMe,
   getMe
 };

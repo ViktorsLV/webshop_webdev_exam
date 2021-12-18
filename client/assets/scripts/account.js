@@ -36,7 +36,7 @@ async function getMe(data) {
       showAlert(text, alertError);
     }
     if (response.status === 200) {
-      // 201 - created
+    
       const result = await response.json();
       console.log(result);
       firstName.value = result.firstName;
@@ -90,24 +90,24 @@ async function getMyOrders(data) {
 
 async function editUser(data) {
   try {
-    console.log(data);
-    // const response = await fetch(`${baseUrl}/users/me`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //     Authorization: `Bearer ${currentUser}`,
-    //   }
-    // });
-    // if (response.status >= 400) {
-    //   const text = "Something went wrong. Please, try again...";
-    //   showAlert(text, alertError);
-    // }
-    // if (response.status === 200) { // 201 - created
-    //   const result = await response.json();
-    //   console.log(result);
-    //   // window.location.replace("http://127.0.0.1:5500/client/assets/pages/complete.html");
-    // }
+    const response = await fetch(`${baseUrl}/users/me/update`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${currentUser}`,
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.status >= 400) {
+      const text = "Something went wrong. Please, try again...";
+      showAlert(text, alertError);
+    }
+    if (response.status === 200) {
+      const result = await response.json();
+      console.log(result);
+
+    }
   } catch (error) {
     // handle server down error
     alert(error);
@@ -123,7 +123,7 @@ updateBtn.addEventListener("click", (e) => {
     const text = "Required fields must be filled!";
     showAlert(text, alertError);
   } else {
-    const data = { firstName, lastName, email };
+    const data = { firstName: firstName.value, lastName: lastName.value, email: email.value};
     editUser(data);
   }
 });

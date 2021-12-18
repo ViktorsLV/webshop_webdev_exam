@@ -10,4 +10,7 @@ router.get("/count", auth, userController.getUsersCount);
 
 router.get("/:id", auth, userController.getUserById);
 
+router.put("/me/update", auth, userController.updateMe);
+
 module.exports = router;
+

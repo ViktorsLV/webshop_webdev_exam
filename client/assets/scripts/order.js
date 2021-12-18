@@ -54,7 +54,7 @@ async function getOrder() {
                 <h5>${r.name}</h5>
             </div>
             <div class="order-price">
-                <p >x${r.qty} x $${r.price} = $${r.price * r.qty}</p>
+                <p >x${r.qty} x $${r.price} = $${(r.price * r.qty).toFixed(2)}</p>
             </div>
           </div>
         `;

@@ -16,7 +16,6 @@ async function fetchProducts() {
       },
     });
     if (response.status >= 400) {
-      /* TODO: better error handling*/
       const text = "Something went wrong";
       console.log(response, text)
       // showAlert(text, alertError);
@@ -28,9 +27,9 @@ async function fetchProducts() {
         productBox.innerHTML += `
         <a class="product" href="http://127.0.0.1:5500/client/assets/pages/product.html?${r._id}">
           <div>
-            <img src="../${r.image}" alt="${r.image}">
+            <img src="../${r.image}" alt="${r.image}" class="product-image">
             <h5 class="no-spacing">${r.name}</h5>
-            <h4 class="no-spacing">$ ${r.price}</h4>
+            <h4 class="no-spacing price">$ ${r.price}</h4>
           </div>
         </a>
         `;

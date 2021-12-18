@@ -1,5 +1,6 @@
 const baseUrl = "http://localhost:5000/api";
 const localStorage = window.localStorage; 
+const currentUser = localStorage.getItem("token");
 
 /* REGISTERING USER */
 const productImg = document.querySelector("#productImg");
@@ -51,14 +52,14 @@ async function fetchProducts() {
         <div class="product-details flex-col">
             <h3 class="no-spacing">${product.name}</h3>
             <h4 class="no-spacing secondary">${product.brand}</h4>
-            <h5 class="">$ ${product.price}</h5>
+            <h5 class="price">$${product.price}</h5>
             <div class="">${product.description}</div>
         </div>
 
         <div class="product-checkout flex-col">
             <div class="flex-row between checkout-table">
                 <p>Price</p>
-                <p>$ ${product.price}</p>
+                <p>$${product.price}</p>
             </div>
             <div class="flex-row between checkout-table">
                 <p>Status</p>
@@ -76,7 +77,7 @@ async function fetchProducts() {
         btn.innerHTML = `ADD TO CART`
         div.appendChild(btn);
 
-        product.countInStock > 0 ? btn.style.display = 'block' : btn.style.display = 'none' 
+        product.countInStock > 0 && currentUser ? btn.style.display = 'block' : btn.style.display = 'none' 
 
         btn.addEventListener('click', () => {addToCart(product)});
     }

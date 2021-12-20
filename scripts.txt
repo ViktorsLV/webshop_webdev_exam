@@ -1,1 +1,1 @@
-SCRIPTS can be found in the zip folder under text file "SCRIPTS"
+SCRIPTS and INSTRUCTIONS can be found in the zip folder under text file "SCRIPTS"

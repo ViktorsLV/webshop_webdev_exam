@@ -7,7 +7,7 @@ const connect = require('./db/connect'); // connecting to DB
 const {notFound, errorHandler } = require('./middlewares/errorMiddleware')
 dotenv.config()
 const app = express(); // init app
-
+  
 // importing routes
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");

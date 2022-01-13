@@ -33,7 +33,7 @@ async function registerUser(data) {
       const text = "Invalid details"
       showAlert(text, alertError); 
     } 
-    if (response.status >= 200) {
+    else if (response.status >= 200) { // or === 200
       const result = await response.json();
       const text = "Welcome!"
       showAlert(text, alertSuccess)

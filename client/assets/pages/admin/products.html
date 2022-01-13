@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage products you have in the shop easily">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/admin.css">
+    <link id="theme-style" rel="stylesheet" href="">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
+    <!-- TODO: switch scripts -->
+    <script src="../../scripts/main.js" defer></script>
+    <script src="../../scripts/admin/products.js" async defer></script>
+    <title>ADMIN - Manage Products | Webshop</title>
+</head>
+
+<body>
+    <section class="main">
+        <!-- nav -->
+        <div class="menu-btn">
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+            <div class="btn-line"></div>
+        </div>
+
+        <nav class="nav-wrapper menu">
+            <a href="../../../index.html" class="menu-logo mobile-hide">
+                <!-- LOGO -->
+                <div class="highlight">WEBSHOP | ADMIN</div>
+            </a>
+
+            <!-- nav items -->
+            <ul id="navigation" class="menu-nav">
+                <li class="nav-item">
+                    <a href="../../../index.html" class="nav-link">SHOP</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="container">
+            <div class="alert-success alert-small" id="alertSuccess"></div>
+            <div class="alert-warning alert-small" id="alertWarning"></div>
+            
+            <h4>Manage products:</h4>
+            <div class="product-cell" id="productCell">
+                <table id="productDetails">
+                    <h5 class="loader" id="loader">Loading data...</h5>
+                    <tr>
+                        <th>Product ID</th>
+                        <th class="mobile-hide">Name</th>
+                        <th class="mobile-hide">Price</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <p>WEBSHOP &#128722; by Viktors Cebotarjovs
+            <br />
+            Copyright &copy; <span id="copyright">
+                <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+            </span> | Icons by Font Awesome
+        </p>
+    </footer>
+</body>
+
+</html>

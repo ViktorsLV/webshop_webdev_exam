@@ -50,4 +50,6 @@ function leave() {
   }
 }
 
-logout.addEventListener("click", leave);
+if (logout) {
+  logout.addEventListener("click", leave);
+}

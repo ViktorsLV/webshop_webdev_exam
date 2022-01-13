@@ -17,8 +17,8 @@ async function fetchProducts() {
     });
     if (response.status >= 400) {
       const text = "Something went wrong";
-      console.log(response, text)
-      // showAlert(text, alertError);
+      // console.log(response, text)
+      showAlert(text, alertError);
     }
     if (response.status >= 200) {
       const result = await response.json();

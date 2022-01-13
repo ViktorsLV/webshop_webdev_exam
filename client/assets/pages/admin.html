@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin login">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/admin.css">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link id="theme-style" rel="stylesheet" href="">
+  <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
+  <script src="../scripts/main.js" defer></script>
+  <script src="../scripts/admin/login.js" defer></script>
+  <title>Admin Panel | Webshop</title>
+</head>
+
+<body>
+
+
+  <section class="main">
+    <!-- nav -->
+    <div class="menu-btn">
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+      <div class="btn-line"></div>
+    </div>
+
+    <nav class="nav-wrapper menu">
+      <a href="../../index.html" class="menu-logo mobile-hide">
+        <!-- LOGO -->
+        <div class="highlight">WEBSHOP | ADMIN</div>
+      </a>
+
+      <!-- nav items -->
+      <ul id="navigation" class="menu-nav">
+        <li class="nav-item">
+          <a href="../../index.html" class="nav-link">SHOP</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <main>
+      <section class="main">
+        <div class="container">
+          <h3 class="heading-center admin-login">Admin Log in</h3>
+
+          <form id="login-form" class="form-control">
+            <div class="alert-success" id="alertSuccess"></div>
+            <div class="alert-error" id="alertError"></div>
+            <label>Email</label>
+            <input type="email" name="" id="loginEmail" placeholder="Your email" class="input-field">
+
+            <label>Password</label>
+            <input type="password" name="" id="loginPassword" placeholder="Your password" class="input-field">
+
+            <input type="submit" value="Log In" id="loginButton" class="submit-btn">
+          </form>
+        </div>
+
+      </section>
+    </main>
+
+
+    <footer class="footer">
+      <p>WEBSHOP &#128722; by Viktors Cebotarjovs
+        <br />
+        Copyright &copy; <span id="copyright">
+          <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+        </span> | Icons by Font Awesome
+      </p>
+    </footer>
+</body>
+
+</html>

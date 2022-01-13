@@ -1,0 +1,33 @@
+:root {
+  --main-color: #bbbbbb;
+  --secondary-color: rgb(240, 240, 240);
+
+  --border-color: #abaaaa;
+
+  --main-text: #000;
+  --secondary-text: #4b5156;
+
+  --theme-border: #24292e;
+  --preview-bg: rgb(251, 249, 243, 0.8);
+  --preview-shadow: #d8d1ba;
+
+  --nav-active: #17a2b8;
+  --btn-color: #b6ac8c;
+  --btn-delete: rgb(167, 33, 33);
+  --btn-hover: #aca286;
+
+  --highlight: #17a2b8;
+}
+
+.admin-login {
+  margin-top: 7vw;
+}
+
+.product-cell {
+  height: 40vw;
+  overflow-y: auto;
+}
+
+.loader {
+  color: var(--highlight);
+}

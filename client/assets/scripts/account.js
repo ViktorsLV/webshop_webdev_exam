@@ -13,7 +13,9 @@ const orderDetails = document.querySelector("#orderDetails");
 const confirmDelete = document.querySelector("#confirmDelete");
 const deleteModal = document.querySelector("#deleteModal");
 const deleteAccountBtn = document.querySelector("#deleteAccountBtn");
-var span = document.getElementsByClassName("close")[0];
+const admin = document.querySelector("#admin");
+
+const span = document.getElementsByClassName("close")[0];
 
 const alertError = document.querySelector("#alertError");
 const alertSuccess = document.querySelector("#alertSuccess");
@@ -34,6 +36,7 @@ const reqHeaders = {
 }
 
 async function getMe() {
+  checkForUser()
   try {
     const response = await fetch(`${baseUrl}/users/me`, {
       method: "GET",
@@ -50,6 +53,9 @@ async function getMe() {
       firstName.value = result.firstName;
       lastName.value = result.lastName;
       email.value = result.email;
+      if (result.isAdmin) {
+        admin.innerHTML = 'ADMIN'
+      }
     }
   } catch (error) {
     // handle server down error
@@ -116,8 +122,9 @@ async function getMyOrders() {
       }
     }
   } catch (error) {
-    // handle server down error
+    checkForUser()
     alert(error);
+    // handle server down error
   }
 }
 
@@ -176,6 +183,13 @@ window.onclick = function(event) {
   if (event.target == deleteModal) {
     deleteModal.style.display = "none";
   }
+}
+
+function checkForUser() {
+  if (!currentUser) {
+    location.replace('http://127.0.0.1:5500/client/assets/pages/login.html');
+  }  
+  return;
 }
 
 getMe();

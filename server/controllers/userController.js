@@ -60,6 +60,7 @@ getMe = async (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        isAdmin: user.isAdmin
       });
     } else {
       res.status(404).send("User Not Found");

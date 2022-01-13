@@ -4,6 +4,7 @@ const remove = document.querySelector("#remove");
 const clearCart = document.querySelector("#clearCart");
 const totalPrice = document.querySelector("#totalPrice");
 const alertSuccess = document.querySelector('#alertSuccess');
+const currentUser = localStorage.getItem("token");
 
 let cartItems = JSON.parse(localStorage.getItem("cart"));
 if (!cartItems) {
@@ -25,6 +26,7 @@ function countTotal() {
 };
 
 function getCartItems() {
+  checkForUser();
   if (cartItems.length > 0) {
     const items = cartItems.map((product) => {
       return `
@@ -111,4 +113,10 @@ function clear() {
 function save() {
   // function to save changes to localStorage
   localStorage.setItem("cart", JSON.stringify(cartItems));
+}
+
+function checkForUser() {
+  if (!currentUser) {
+    location.replace('http://127.0.0.1:5500/client/assets/pages/login.html');
+  }
 }

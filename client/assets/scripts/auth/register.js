@@ -29,7 +29,6 @@ async function registerUser(data) {
     })
     if (response.status >= 400 ) {
       console.log(response)
-      /* TODO: better error handling*/
       const text = "Invalid details"
       showAlert(text, alertError); 
     } 

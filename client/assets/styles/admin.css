@@ -24,10 +24,23 @@
 }
 
 .product-cell {
-  height: 40vw;
+  height: 35vw;
   overflow-y: auto;
 }
 
 .loader {
   color: var(--highlight);
+}
+
+.trash {
+  color: red;
+}
+
+.link {
+  color: var(--btn-color);
+}
+
+.details:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

@@ -1,6 +1,7 @@
 const baseUrl = "http://localhost:5000/api";
 const localStorage = window.localStorage;
 const currentUser = localStorage.getItem("token");
+const permissions = localStorage.getItem("permissions");
 
 const productCell = document.querySelector("#productCell");
 const productDetails = document.querySelector("#productDetails");
@@ -59,6 +60,7 @@ const reqHeaders = {
 async function getAllProducts() {
   loader.style.display = 'block';
   try {
+    checkPermissions()
     const response = await fetch(`${baseUrl}/products`, {
       method: "GET",
       headers: reqHeaders 
@@ -78,7 +80,12 @@ async function getAllProducts() {
               <td>${product._id}</td>
               <td class="mobile-hide">${(product.name).substring(0, 10)}</td>
               <td class="mobile-hide">$ ${product.price}</td>
-              <td class="button-detail"><button class="btn submit-btn details">DETAILS <i class="fas fa-external-link-square-alt"></i></button></td>
+              <td class="button-detail">
+                <button class="trash details"><i class="fas fa-trash-alt"></i></button>
+                <a href="../../pages/admin/product.html?${product._id}">
+                  <button class="link details"><i class="fas fa-external-link-square-alt"></i></button>
+                </a>
+              </td>
             </tr>  
           `;
         });
@@ -114,6 +121,14 @@ if (loading) {
 window.onclick = function(event) {
   if (event.target == deleteModal) {
     deleteModal.style.display = "none";
+  }
+}
+
+function checkPermissions() {
+  if (!permissions) {
+    location.replace('http://127.0.0.1:5500/client/assets/pages/admin.html'); 
+    const text = "Permissions denied! Unauthorized!";
+    alert(text)
   }
 }
 

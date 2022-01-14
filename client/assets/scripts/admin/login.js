@@ -39,6 +39,7 @@ async function loginAdmin(data) {
         showAlert(text, alertSuccess)
         console.log(result)
         localStorage.setItem('token', result.token);
+        localStorage.setItem('permissions', result.isAdmin);
         console.log(result)
         location.href = 'http://127.0.0.1:5500/client/assets/pages/admin/products.html';
       } else {

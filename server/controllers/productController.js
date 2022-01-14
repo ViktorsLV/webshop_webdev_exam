@@ -27,6 +27,23 @@ getOneProduct = async (req, res) => {
   }
 };
 
+// @route   GET /api/products/:id
+// @access  Private/Admin
+deleteProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      await product.remove()
+      res.status(200).json({message: "product removed successfully"});
+    } else {
+      res.status(404).json({ message: "Product not found"});
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
 // @route   POST /api/products
 // @access  Private/Admin
 createProduct = async (req, res) => {
@@ -59,6 +76,7 @@ createProduct = async (req, res) => {
 
 module.exports = {
   getAllProducts,
+  deleteProduct,
   getOneProduct,
   createProduct
 };

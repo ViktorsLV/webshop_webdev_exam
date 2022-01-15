@@ -45,6 +45,7 @@
         </nav>
 
         <div class="container">
+
             <!-- DELETE ACCOUNT MODAL -->
             <div id="deleteModal" class="modal">
                 <!-- Modal content -->
@@ -58,6 +59,7 @@
 
             <!-- ADD PRODUCT MODAL -->
             <div id="addProductModal" class="modal addModal">
+
                 <form id="login-form" class="form-control">
                     <div class="alert-success" id="alertSuccess"></div>
                     <div class="alert-error" id="alertError"></div>
@@ -119,11 +121,13 @@
                 </form>
             </div>
 
-            <!-- ALERTS -->
-            <div class="alert-success alert-small" id="alertSuccess"></div>
-            <div class="alert-warning alert-small" id="alertWarning"></div>
+            <div class="flex flex-row between mt-2 mb-2">
+                <div class="alert-success alert-small" id="alertSuccessSmall"></div>
+                <div class="alert-error alert-small" id="alertErrorSmall"></div>
+            </div>
 
             <div class="flex flex-row between mt-2 mb-2">
+
                 <h4>Manage products:</h4>
                 <div class="mt-2">
                     <button class="btn-add" id="addProductBtn">Add new product <i class="fas fa-plus"></i></button>
@@ -133,6 +137,7 @@
                 <table id="productDetails">
                     <h5 class="loader" id="loader">Loading data...</h5>
                     <tr>
+                        <th>Nr.</th>
                         <th>Product ID</th>
                         <th class="mobile-hide">Name</th>
                         <th class="mobile-hide">Price</th>

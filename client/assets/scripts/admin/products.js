@@ -30,11 +30,13 @@ const admin = document.querySelector("#admin");
 const span = document.getElementsByClassName("close")[0];
 const alertError = document.querySelector("#alertError");
 const alertSuccess = document.querySelector("#alertSuccess");
+const alertErrorSmall = document.querySelector("#alertErrorSmall");
+const alertSuccessSmall = document.querySelector("#alertSuccessSmall");
 
 let productId = null;
 
 // custom function to show alert
-const showAlert = (msg, el) => {
+function showAlert(msg, el) {
   el.style.display = "block"; // change alert visibility on HTML page
   el.innerHTML = `${msg}`; // add text for alert
   setTimeout(function () {
@@ -65,38 +67,16 @@ async function createProduct(data) {
     if (response.status === 201) {
       const result = await response.json();
       console.log(result);
+
       const text = "Product successfully created!";
-      showAlert(text, alertError);
+      showAlert(text, alertSuccessSmall);
+      console.log('XDD')
       addProductModal.style.display = "none";
-      getAllProducts();
     }
+    location.reload();
   } catch (error) {
     // handle server down error
     console.log(error)
-    alert(error);
-  }
-}
-
-async function deleteProduct(productId) {
-  try {
-    const response = await fetch(`${baseUrl}/products/${productId}`, {
-      method: "DELETE",
-      headers: reqHeaders 
-    });
-    if (response.status >= 400) {
-      const text = "Something went wrong";
-      showAlert(text, alertError);
-    }
-    if (response.status === 200) {
-      const result = await response.json();
-      console.log(result);
-      const text = "Product deleted successfully!";
-      showAlert(text, alertError);
-      deleteModal.style.display = "none";
-      getAllProducts();
-    }
-  } catch (error) {
-    // handle server down error
     alert(error);
   }
 }
@@ -117,9 +97,10 @@ async function getAllProducts() {
       const result = await response.json();
       console.log(result)
       if (result.length > 0) {
-        result.forEach((product) => {
-          productDetails.innerHTML += `
+        result.reverse().forEach((product, index) => {
+          productDetails.innerHTML +=`
             <tr>
+              <td>${index + 1}</td>
               <td>${product._id}</td>
               <td class="mobile-hide">${(product.name).substring(0, 10)}</td>
               <td class="mobile-hide">$ ${product.price}</td>
@@ -141,11 +122,36 @@ async function getAllProducts() {
       }
     }
   } catch (error) {
-    checkForUser()
     alert(error);
     // handle server down error
   } 
   loader.style.display = 'none';
+}
+
+async function deleteProduct(productId) {
+  try {
+    const response = await fetch(`${baseUrl}/products/${productId}`, {
+      method: "DELETE",
+      headers: reqHeaders 
+    });
+    if (response.status >= 400) {
+      const text = "Something went wrong";
+      showAlert(text, alertError);
+    }
+    if (response.status === 200) {
+      const result = await response.json();
+      console.log(result);
+
+      // const text = "Product deleted successfully!";
+      // showAlert(text, alertSuccessSmall);
+
+      deleteModal.style.display = "none";
+      location.reload();
+    }
+  } catch (error) {
+    // handle server down error
+    alert(error);
+  }
 }
 
 if (loading) {

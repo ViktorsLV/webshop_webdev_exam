@@ -52,7 +52,7 @@ createProduct = async (req, res) => {
     name: 'Test product',
     price: 100,
     user: req.user._id,
-    image: '/images/test.jpg',
+    image: '/images/test.png',
     brand: 'Test brand',
     category: 'Test category',
     countInStock: 50,

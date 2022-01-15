@@ -44,3 +44,23 @@
   cursor: pointer;
   opacity: 0.8;
 }
+
+.btn-add {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(54, 187, 54);
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+}
+
+.btn-add:hover {
+  background-color: rgb(49, 170, 49);
+  cursor: pointer;
+}
+
+.form-grid {
+  display: grid;   
+  grid-template-columns: 50% 50%;
+  grid-gap: 5px;
+}

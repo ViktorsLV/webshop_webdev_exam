@@ -60,7 +60,6 @@ const reqHeaders = {
 async function getAllProducts() {
   loader.style.display = 'block';
   try {
-    checkPermissions()
     const response = await fetch(`${baseUrl}/products`, {
       method: "GET",
       headers: reqHeaders 
@@ -129,7 +128,9 @@ function checkPermissions() {
     location.replace('http://127.0.0.1:5500/client/assets/pages/admin.html'); 
     const text = "Permissions denied! Unauthorized!";
     alert(text)
+    return;
   }
 }
 
+checkPermissions();
 getAllProducts();

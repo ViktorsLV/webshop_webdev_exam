@@ -23,7 +23,6 @@ const showAlert = (msg, el) => {
 };
 
 async function fetchProduct() {
-  checkPermissions();
   try {
     const response = await fetch(`${baseUrl}/products/${productId}`, {
       method: "GET",
@@ -65,5 +64,8 @@ function checkPermissions() {
     const text = "Permissions denied! Unauthorized!";
     alert(text)
     location.replace('http://127.0.0.1:5500/client/assets/pages/admin.html'); 
+    return;
   }
 }
+
+checkPermissions()

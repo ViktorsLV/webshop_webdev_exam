@@ -47,17 +47,18 @@ deleteProduct = async (req, res) => {
 // @route   POST /api/products
 // @access  Private/Admin
 createProduct = async (req, res) => {
-  
+  const { name, price, brand, image, category, countInStock, description } = req.body;
+
   const product = new Product({
-    name: 'Test product',
-    price: 100,
+    name,
+    price,
     user: req.user._id,
-    image: '/images/test.png',
-    brand: 'Test brand',
-    category: 'Test category',
-    countInStock: 50,
+    image: image || '/images/test.png',
+    brand,
+    category,
+    countInStock,
     numReviews: 0,
-    description: 'Test description',
+    description,
   })
 
   try {
@@ -65,12 +66,13 @@ createProduct = async (req, res) => {
 
     if(!createdProduct) {
       throw new Error("Something went wrong, please, try again");
-    } else {
-      res.status(201).json(createdProduct)
+    }
+    if (createdProduct) {
+      res.status(201).json(createdProduct);
     }
 
   } catch (error) {
-    res.status(400).json("Invalid data", error);
+    res.status(400).json(error.message);
   }
 }
 

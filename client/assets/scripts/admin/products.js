@@ -5,17 +5,33 @@ const permissions = localStorage.getItem("permissions");
 
 const productCell = document.querySelector("#productCell");
 const productDetails = document.querySelector("#productDetails");
-const loader = document.querySelector("#loader");
 
+/* MODALS */
 const confirmDelete = document.querySelector("#confirmDelete");
 const deleteModal = document.querySelector("#deleteModal");
-const deleteAccountBtn = document.querySelector("#deleteAccountBtn");
+
+const addProductModal = document.querySelector("#addProductModal");
+const addProductBtn = document.querySelector("#addProductBtn");
+
+/* TEXT AND INPUTS */
+const productName = document.querySelector('#name');
+const brand = document.querySelector('#brand');
+const price = document.querySelector('#price');
+const category = document.querySelector('#category');
+const stock = document.querySelector('#stock');
+const image = document.querySelector('#image');
+const description = document.querySelector('#description');
+
+const submitButton = document.querySelector('#submitButton');
+
+/* UTILS */
+const loader = document.querySelector("#loader");
 const admin = document.querySelector("#admin");
-
 const span = document.getElementsByClassName("close")[0];
-
 const alertError = document.querySelector("#alertError");
 const alertSuccess = document.querySelector("#alertSuccess");
+
+let productId = null;
 
 // custom function to show alert
 const showAlert = (msg, el) => {
@@ -34,28 +50,56 @@ const reqHeaders = {
   Authorization: `Bearer ${currentUser}`,
 }
 
-// async function deleteProduct() {
-//   try {
-//     const response = await fetch(`${baseUrl}/users/me/delete`, {
-//       method: "DELETE",
-//       headers: reqHeaders 
-//     });
-//     if (response.status >= 400) {
-//       const text = "User not found";
-//       showAlert(text, alertError);
-//     }
-//     if (response.status === 200) {
-    
-//       const result = await response.json();
-//       console.log(result);
-//       localStorage.clear(); // logout user and clear the cart
-//       location.replace('http://127.0.0.1:5500/client/index.html');
-//     }
-//   } catch (error) {
-//     // handle server down error
-//     alert(error);
-//   }
-// }
+async function createProduct(data) {
+  try {
+    const response = await fetch(`${baseUrl}/products`, {
+      method: "POST",
+      headers: reqHeaders ,
+      body: JSON.stringify(data),
+    });
+    if (response.status >= 400) {
+      const text = "Something went wrong";
+      showAlert(text, alertError);
+      console.log(response.error)
+    }
+    if (response.status === 201) {
+      const result = await response.json();
+      console.log(result);
+      const text = "Product successfully created!";
+      showAlert(text, alertError);
+      addProductModal.style.display = "none";
+      getAllProducts();
+    }
+  } catch (error) {
+    // handle server down error
+    console.log(error)
+    alert(error);
+  }
+}
+
+async function deleteProduct(productId) {
+  try {
+    const response = await fetch(`${baseUrl}/products/${productId}`, {
+      method: "DELETE",
+      headers: reqHeaders 
+    });
+    if (response.status >= 400) {
+      const text = "Something went wrong";
+      showAlert(text, alertError);
+    }
+    if (response.status === 200) {
+      const result = await response.json();
+      console.log(result);
+      const text = "Product deleted successfully!";
+      showAlert(text, alertError);
+      deleteModal.style.display = "none";
+      getAllProducts();
+    }
+  } catch (error) {
+    // handle server down error
+    alert(error);
+  }
+}
 
 async function getAllProducts() {
   loader.style.display = 'block';
@@ -80,7 +124,7 @@ async function getAllProducts() {
               <td class="mobile-hide">${(product.name).substring(0, 10)}</td>
               <td class="mobile-hide">$ ${product.price}</td>
               <td class="button-detail">
-                <button class="trash details"><i class="fas fa-trash-alt"></i></button>
+                <button onclick="openDeleteModal('${product._id}')" class="trash details"><i class="fas fa-trash-alt"></i></button>
                 <a href="../../pages/admin/product.html?${product._id}">
                   <button class="link details"><i class="fas fa-external-link-square-alt"></i></button>
                 </a>
@@ -108,18 +152,56 @@ if (loading) {
   productDetails.innerHTML += `<h1>Loading data...</h1>`
 }
 
-// confirmDelete.addEventListener("click", () => {
-//   // deleteMe()
-// })
+submitButton.addEventListener('click', (e) => {
+  e.preventDefault();
 
-// span.onclick = function() {
-//   deleteModal.style.display = "none";
-// }
+  // check if the fields are not empty
+  if(!(productName.value && brand.value && price.value && category.value && stock.value && description.value)) {
+    const text = "All fields must be filled!"
+    showAlert(text, alertError)
+  } else {
+    /* destructuring obj */
+    const data = { 
+      name: productName.value, 
+      brand: brand.value, 
+      price: price.value, 
+      category: category.value, 
+      countInStock: stock.value,
+      image: '/images/test.png',
+      description: description.value
+    }
+    createProduct(data);
+  }
+});
+
+confirmDelete.addEventListener("click", () => {
+  deleteProduct(productId)
+})
+
+span.onclick = function() {
+  deleteModal.style.display = "none";
+}
+
+function openDeleteModal(id) {
+    deleteModal.style.display = "block";
+    productId = id;
+    // console.log(productId)
+}
+
+addProductBtn.addEventListener("click", () => {
+  addProductModal.style.display = "block";
+})
 
 // When the user clicks anywhere outside of the deleteModal, close it
 window.onclick = function(event) {
   if (event.target == deleteModal) {
     deleteModal.style.display = "none";
+  }
+}
+
+window.onclick = function(event) {
+  if (event.target == addProductModal) {
+    addProductModal.style.display = "none";
   }
 }
 

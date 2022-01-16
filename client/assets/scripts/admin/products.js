@@ -2,6 +2,7 @@ const baseUrl = "http://localhost:5000/api";
 const localStorage = window.localStorage;
 const currentUser = localStorage.getItem("token");
 const permissions = localStorage.getItem("permissions");
+const path = localStorage.getItem("path");
 
 const productCell = document.querySelector("#productCell");
 const productDetails = document.querySelector("#productDetails");
@@ -34,6 +35,7 @@ const alertErrorSmall = document.querySelector("#alertErrorSmall");
 const alertSuccessSmall = document.querySelector("#alertSuccessSmall");
 
 let productId = null;
+let formData;
 
 // custom function to show alert
 function showAlert(msg, el) {
@@ -92,8 +94,9 @@ async function createProduct(data) {
 
       const text = "Product successfully created!";
       showAlert(text, alertSuccessSmall);
-      console.log("XDD");
+      
       addProductModal.style.display = "none";
+      localStorage.removeItem("path")
     }
     location.reload();
   } catch (error) {
@@ -101,6 +104,23 @@ async function createProduct(data) {
     console.log(error);
     alert(error);
   }
+}
+
+async function uploadFile(data) {
+  try {
+      const response = await fetch(`${baseUrl}/upload`, {
+        method: "POST",
+        body: data
+      })
+      console.log(response.status)
+      if (response.status === 200) {
+        const result = await response.json();
+        console.log(result)
+        localStorage.setItem("path", result)
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
 }
 
 async function getAllProducts() {
@@ -178,6 +198,17 @@ async function deleteProduct(productId) {
   }
 }
 
+image.addEventListener("change", (event) => {
+  event.preventDefault();
+  const file = event.target.files[0]
+  formData = new FormData()
+  formData.append('image', file)
+
+  uploadFile(formData)
+  console.log(formData)
+  console.log(file)
+})
+
 if (loading) {
   productDetails.innerHTML += `<h1>Loading data...</h1>`;
 }
@@ -206,7 +237,7 @@ submitButton.addEventListener("click", (e) => {
       price: price.value,
       category: category.value,
       countInStock: stock.value,
-      image: "/images/test.png",
+      image: ((path !== null) ? path : "/test.png"),
       description: description.value,
     };
     createProduct(data);

@@ -4,6 +4,7 @@ const colors = require('colors');
 const morgan = require('morgan');
 const dotenv = require('dotenv'); // env files
 const connect = require('./db/connect'); // connecting to DB
+const path = require('path')
 const {notFound, errorHandler } = require('./middlewares/errorMiddleware')
 dotenv.config()
 const app = express(); // init app
@@ -13,6 +14,7 @@ const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 // log only 2xx responses to console
 app.use(morgan('dev', {
@@ -33,7 +35,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/upload", uploadRoutes);
 
+app.use("/uploads", express.static(path.join(__dirname, '/uploads'))) // for making files static - (https://expressjs.com/en/starter/static-files.html)
 
 const PORT = process.env.PORT
 

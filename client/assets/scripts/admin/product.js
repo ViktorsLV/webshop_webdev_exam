@@ -48,6 +48,10 @@ const showAlert = (msg, el) => {
   }, 10000);
 };
 
+const passAlert = (msg) => {
+  localStorage.setItem('status', msg)
+};
+
 const reqHeaders = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
@@ -100,8 +104,9 @@ async function deleteProduct(productId) {
       const result = await response.json();
       console.log(result);
 
-      // const text = "Product deleted successfully!";
-      // showAlert(text, alertSuccessSmall);
+      // sending alert to Local Storage and retrieving it on parent page
+      const text = "success";
+      passAlert(text)
 
       closeDeleteModal()
       location.replace('http://127.0.0.1:5500/client/assets/pages/admin/products.html'); 

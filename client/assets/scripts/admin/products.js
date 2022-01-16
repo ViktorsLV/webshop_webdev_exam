@@ -44,6 +44,28 @@ function showAlert(msg, el) {
   }, 5000);
 }
 
+function getAlert() {
+  if (localStorage.getItem("status") === 'success') {
+    alertSuccessSmall.style.display = "block"; // change alert visibility on HTML page
+    alertSuccessSmall.innerHTML = `Success!`;
+    setTimeout(function () {
+      alertSuccessSmall.parentNode.removeChild(alertSuccessSmall); // remove alert from form after 5 seconds
+    }, 3000);
+  }
+  else if (localStorage.getItem("status") === 'error') {
+    alertErrorSmall.style.display = "block"; // change alert visibility on HTML page
+    alertErrorSmall.innerHTML = `Error, try again later!`;
+    setTimeout(function () {
+      alertErrorSmall.parentNode.removeChild(alertErrorSmall); // remove alert from form after 5 seconds
+    }, 3000);
+  } else {
+    return
+  }
+  localStorage.removeItem("status");
+}
+
+getAlert()
+
 let loading = false;
 
 const reqHeaders = {

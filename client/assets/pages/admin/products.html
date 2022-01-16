@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../../styles/admin.css">
     <link id="theme-style" rel="stylesheet" href="">
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" width="16" height="16">
-    <!-- TODO: switch scripts -->
     <script src="../../scripts/main.js" defer></script>
     <script src="../../scripts/admin/products.js" async defer></script>
     <title>ADMIN - Manage Products | Webshop</title>
@@ -60,7 +59,7 @@
             <!-- ADD PRODUCT MODAL -->
             <div id="addProductModal" class="modal addModal">
 
-                <form id="login-form" class="form-control product-form">
+                <form id="login-form" class="form-control product-form" onsubmit="return false" target="hidden-iframe" enctype="multipart/form-data">
                     <div class="alert-success" id="alertSuccess"></div>
                     <div class="alert-error" id="alertError"></div>
 
@@ -96,29 +95,29 @@
                     </div>
 
                     <div class="form-grid">
-
-
                         <div>
                             <label>Stock</label>
                             <input type="number" name="stock" id="stock" placeholder="Count in stock"
                                 class="input-field" min="0">
                         </div>
 
-                        <div>
+                        <div type="button">
                             <label>Image</label>
                             <input type="file" name="image" id="image" placeholder="Image"
-                                accept="image/png, image/jpg">
+                            class="input-field"
+                                accept="image/png, image/jpg, image/jpeg">
                         </div>
                     </div>
 
                     <div class="flex flex-col">
                         <label>Description</label>
                         <textarea rows="4" name="description" id="description"
-                            placeholder="Product Description (400 chars. max)" class="input-field"></textarea>
+                            placeholder="Product Description (1000 chars. max)" class="input-field"></textarea>
                     </div>
 
                     <input type="submit" value="Submit" id="submitButton" class="submit-btn">
                 </form>
+                <iframe id="hidden-iframe"></iframe>
             </div>
 
             <div class="flex flex-row between mt-2 mb-2">
@@ -133,14 +132,14 @@
                     <button class="btn-add" id="addProductBtn">Add new product <i class="fas fa-plus"></i></button>
                 </div>
             </div>
+            <h5 class="loader" id="loader">Loading data...</h5>
             <div class="product-cell" id="productCell">
                 <table id="productDetails">
-                    <h5 class="loader" id="loader">Loading data...</h5>
                     <tr>
                         <th>Nr.</th>
                         <th>Product ID</th>
                         <th class="mobile-hide">Name</th>
-                        <th class="mobile-hide">Price</th>
+                        <th class="mobile-hide">Price</th> 
                         <th>Actions</th>
                     </tr>
 

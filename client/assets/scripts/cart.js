@@ -32,7 +32,7 @@ function getCartItems() {
       return `
 				<div class="flex-row cart-items">
           <div class="cart-img">
-            <img src="../${product.image}" alt="${product.name}">
+            <img src="../../../uploads/${product.image}" alt="${product.name}">
           </div>
           <div>
               <h5 class="cart-title">${product.name}</h5>

@@ -41,7 +41,8 @@ async function loginAdmin(data) {
         localStorage.setItem('token', result.token);
         localStorage.setItem('permissions', result.isAdmin);
         console.log(result)
-        location.href = 'http://127.0.0.1:5500/client/assets/pages/admin/products.html';
+        // location.href = 'http://127.0.0.1:5500/client/assets/pages/admin/products.html';
+        location.href = 'file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/admin/products.html';
       } else {
         const text = "Unauthorized!"
         showAlert(text, alertError); 

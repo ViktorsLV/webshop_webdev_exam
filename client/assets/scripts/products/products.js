@@ -25,9 +25,9 @@ async function fetchProducts() {
       console.log(result);
       result.forEach(r => {
         productBox.innerHTML += `
-        <a class="product" href="http://127.0.0.1:5500/client/assets/pages/product.html?${r._id}">
+        <a class="product" href="../pages/product.html?${r._id}">
           <div>
-            <img src="../${r.image}" alt="${r.image}" class="product-image">
+            <img src="../../../uploads/${r.image}" alt="${r.image}" class="product-image">
             <h5 class="no-spacing">${r.name}</h5>
             <h4 class="no-spacing price">$ ${r.price}</h4>
           </div>

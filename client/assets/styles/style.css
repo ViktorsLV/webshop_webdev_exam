@@ -351,7 +351,7 @@ div {
 /* HOME */
 #home {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("../images/desk.jpg");
+    url("../../../uploads/desk.jpg");
   height: 98vh;
   width: 100vw;
   background-repeat: no-repeat;

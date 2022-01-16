@@ -95,7 +95,7 @@ async function fetchProduct() {
       console.log(product);
       productBox.innerHTML += `
         <div class="product-image">
-          <img src="../../${product.image}" alt="${product.name}">
+          <img src="../../../../uploads/${product.image}" alt="${product.name}">
         </div>
 
         <div class="product-details flex-col">

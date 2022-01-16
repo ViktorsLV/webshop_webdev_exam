@@ -48,7 +48,7 @@ async function getOrder() {
         orderItems.innerHTML += `
           <div class="flex-row order-items">
             <div class="order-img">
-              <img src="../${r.image}" alt="${r.name}">
+              <img src="../../../uploads/${r.image}" alt="${r.name}">
             </div>
             <div class="order-title">
                 <h5>${r.name}</h5>

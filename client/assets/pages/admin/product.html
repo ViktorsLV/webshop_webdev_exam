@@ -61,7 +61,7 @@
                     <div class="alert-success" id="alertSuccess"></div>
                     <div class="alert-error" id="alertError"></div>
 
-                    <h4 class="heading-center">Add new product:</h4>
+                    <h4 class="heading-center">Edit product:</h4>
 
                     <div class="form-grid">
                         <div>
@@ -81,7 +81,7 @@
                         <div>
                             <label>Price</label>
                             <input type="number" name="price" id="price" placeholder="Product Price ($)"
-                                class="input-field">
+                                class="input-field" min="0">
                         </div>
 
                         <div>
@@ -98,7 +98,7 @@
                         <div>
                             <label>Stock</label>
                             <input type="number" name="stock" id="stock" placeholder="Count in stock"
-                                class="input-field">
+                                class="input-field"  min="0">
                         </div>
 
                         <div>
@@ -125,7 +125,7 @@
             <div class="product-grid" id="productBox">
 
                 <div>
-                    <button id="editProductBtn" class="edit-btn mb-2"><i class="fas fa-pen"></i> EDIT PRODUCT</button>
+                    <button id="editProductBtn" onclick="openEditModal()" class="edit-btn mb-2"><i class="fas fa-pen"></i> EDIT PRODUCT</button>
                     <button id="deleteProductBtn" onclick="openDeleteModal()" class="trash details delete-btn"><i class="fas fa-trash-alt"></i> DELETE PRODUCT</button>
                 </div>
             </div>

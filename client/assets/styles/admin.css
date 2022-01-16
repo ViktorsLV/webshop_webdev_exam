@@ -92,3 +92,8 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.product-form {
+  height: min-content;
+  overflow-y: auto;
+}

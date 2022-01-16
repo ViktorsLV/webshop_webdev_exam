@@ -101,6 +101,7 @@ async function fetchProduct() {
         <div class="product-details flex-col">
             <h3 class="no-spacing">${product.name}</h3>
             <h4 class="no-spacing secondary">${product.brand}</h4>
+            <h5 class="no-spacing secondary">In Stock: ${product.countInStock}</h5>
             <h5 class="price">$${product.price}</h5>
             <div class="">${product.description}</div>
         </div>
@@ -165,8 +166,8 @@ async function editProduct(data) {
       const text = "success";
       passAlert(text)
       editProductModal.style.display = "none";
+      location.reload();
     }
-    location.reload();
   } catch (error) {
     // handle server down error
     console.log(error)

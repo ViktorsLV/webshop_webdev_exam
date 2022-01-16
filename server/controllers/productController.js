@@ -18,7 +18,7 @@ getOneProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     if (!product) {
-      res.status(404).json({ message: "Product not found"});
+      res.status(404).json({ message: "Product not found" });
     } else {
       res.status(200).json(product);
     }
@@ -34,51 +34,80 @@ deleteProduct = async (req, res) => {
     const product = await Product.findById(req.params.id);
 
     if (product) {
-      await product.remove()
-      res.status(200).json({message: "product removed successfully"});
+      await product.remove();
+      res.status(200).json({ message: "product removed successfully" });
     } else {
-      res.status(404).json({ message: "Product not found"});
+      res.status(404).json({ message: "Product not found" });
     }
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 // @route   POST /api/products
 // @access  Private/Admin
 createProduct = async (req, res) => {
-  const { name, price, brand, image, category, countInStock, description } = req.body;
+  const { name, price, brand, image, category, countInStock, description } =
+    req.body;
 
   const product = new Product({
     name,
     price,
     user: req.user._id,
-    image: image || '/images/test.png',
+    image: image || "/images/test.png",
     brand,
     category,
     countInStock,
-    numReviews: 0,
+    // numReviews: 0,
     description,
-  })
+  });
 
   try {
-    const createdProduct = await product.save()
+    const createdProduct = await product.save();
 
-    if(!createdProduct) {
+    if (!createdProduct) {
       throw new Error("Something went wrong, please, try again");
     }
     if (createdProduct) {
       res.status(201).json(createdProduct);
     }
-
   } catch (error) {
     res.status(400).json(error.message);
   }
-}
+};
+
+// @route   PUT /api/products
+// @access  Private/Admin
+editProduct = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+      (product.name = req.body.name || product.name),
+        (product.price = req.body.price || product.price),
+        (product.user = req.user._id),
+        (product.image = req.body.image || "/images/test.png"),
+        (product.brand = req.body.brand || product.brand),
+        (product.category = req.body.category || product.category),
+        (product.countInStock = req.body.countInStock || product.countInStock),
+        // product.numReviews = product.numReviews: 0,
+        (product.description = req.body.description || product.description);
+
+      const updatedProduct = await product.save();
+
+      res.status(200).json(updatedProduct); // optionally 202 - changed
+    } else { 
+      res.status(404).send("Product not found");
+    }
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
 
 module.exports = {
   getAllProducts,
   deleteProduct,
   getOneProduct,
-  createProduct
+  createProduct,
+  editProduct
 };

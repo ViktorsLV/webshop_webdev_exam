@@ -139,7 +139,8 @@ async function deleteProduct(productId) {
       passAlert(text)
 
       closeDeleteModal()
-      location.replace('http://127.0.0.1:5500/client/assets/pages/admin/products.html'); 
+      // location.replace('http://127.0.0.1:5500/client/assets/pages/admin/products.html'); 
+      location.replace('file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/admin/products.html'); 
     }
   } catch (error) {
     // handle server down error
@@ -233,7 +234,8 @@ function checkPermissions() {
   if (!permissions) {
     const text = "Permissions denied! Unauthorized!";
     alert(text)
-    location.replace('http://127.0.0.1:5500/client/assets/pages/admin.html'); 
+    // location.replace('http://127.0.0.1:5500/client/assets/pages/admin.html'); 
+    location.replace('file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/admin.html'); 
     return;
   }
 }

@@ -117,6 +117,7 @@ function save() {
 
 function checkForUser() {
   if (!currentUser) {
-    location.replace('http://127.0.0.1:5500/client/assets/pages/login.html');
+    // location.replace('http://127.0.0.1:5500/client/assets/pages/login.html');
+    location.replace('file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/login.html');
   }
 }

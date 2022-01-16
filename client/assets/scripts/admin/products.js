@@ -2,7 +2,7 @@ const baseUrl = "http://localhost:5000/api";
 const localStorage = window.localStorage;
 const currentUser = localStorage.getItem("token");
 const permissions = localStorage.getItem("permissions");
-const path = localStorage.getItem("path");
+// const path = localStorage.getItem("path");
 
 const productCell = document.querySelector("#productCell");
 const productDetails = document.querySelector("#productDetails");
@@ -36,6 +36,7 @@ const alertSuccessSmall = document.querySelector("#alertSuccessSmall");
 
 let productId = null;
 let formData;
+let path;
 
 // custom function to show alert
 function showAlert(msg, el) {
@@ -96,7 +97,7 @@ async function createProduct(data) {
       showAlert(text, alertSuccessSmall);
       
       addProductModal.style.display = "none";
-      localStorage.removeItem("path")
+      path = ''
     }
     location.reload();
   } catch (error) {
@@ -116,7 +117,8 @@ async function uploadFile(data) {
       if (response.status === 200) {
         const result = await response.json();
         console.log(result)
-        localStorage.setItem("path", result)
+        path = result
+        // localStorage.setItem("path", result)
       }
     } catch (error) {
       console.log(error.message)
@@ -237,7 +239,7 @@ submitButton.addEventListener("click", (e) => {
       price: price.value,
       category: category.value,
       countInStock: stock.value,
-      image: ((path !== null) ? path : "/test.png"),
+      image: ((path.length) ? path : "/test.png"),
       description: description.value,
     };
     createProduct(data);
@@ -277,7 +279,8 @@ window.onclick = function (event) {
 
 function checkPermissions() {
   if (!permissions) {
-    location.replace("http://127.0.0.1:5500/client/assets/pages/admin.html");
+    // location.replace("http://127.0.0.1:5500/client/assets/pages/admin.html");
+    location.replace("file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/admin.html");
     const text = "Permissions denied! Unauthorized!";
     alert(text);
     return;

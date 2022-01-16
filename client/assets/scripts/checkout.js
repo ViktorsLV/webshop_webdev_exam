@@ -41,7 +41,8 @@ async function completeOrder(data) {
       const orderRef = result._id
 
       orderPay(orderRef)
-      window.location.replace(`http://127.0.0.1:5500/client/assets/pages/complete.html?${orderRef}`);
+      // window.location.replace(`http://127.0.0.1:5500/client/assets/pages/complete.html?${orderRef}`);
+      window.location.replace(`file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/complete.html?${orderRef}`);
 
       cartItems = [];
       localStorage.removeItem("cart");

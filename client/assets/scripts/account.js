@@ -78,7 +78,8 @@ async function deleteMe() {
       const result = await response.json();
       console.log(result);
       localStorage.clear(); // logout user and clear the cart
-      location.replace('http://127.0.0.1:5500/client/index.html');
+      // location.replace('http://127.0.0.1:5500/client/index.html');
+      location.replace('file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/index.html');
     }
   } catch (error) {
     // handle server down error
@@ -187,7 +188,8 @@ window.onclick = function(event) {
 
 function checkForUser() {
   if (!currentUser) {
-    location.replace('http://127.0.0.1:5500/client/assets/pages/login.html');
+    // location.replace('http://127.0.0.1:5500/client/assets/pages/login.html');
+    location.replace('file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/login.html');
   }  
   return;
 }

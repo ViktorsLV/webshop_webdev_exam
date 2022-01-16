@@ -111,7 +111,7 @@ async function fetchProduct() {
       price.value = product.price 
       category.value = product.category
       stock.value = product.countInStock
-      // image.value = '/images/test.png'
+      // image.value = product.image
       description.value = product.description
     }
   } catch (error) {

@@ -50,7 +50,10 @@
                     <span class="close">&times;</span>
                     <h5>Confirm delete?</h5>
                     <p class="underline">It will NOT be possible to revert this action</p>
-                    <button class="confirm-btn" id="confirmDelete">DELETE ANYWAY</button>
+                    <div class="flex flex-row between">
+                        <span></span>
+                        <button class="confirm-btn" id="confirmDelete">DELETE ANYWAY</button>
+                    </div>
                 </div>
             </div>
 
@@ -102,17 +105,17 @@
                                 class="input-field"  min="0">
                         </div>
 
-                        <div>
+                        <!-- <div>
                             <label>Image</label>
-                            <input type="file" name="image" id="image" placeholder="Image"
+                            <input type="file" name="image" id="image" placeholder="Image" class="input-field"
                                 accept="image/png, image/jpg">
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="flex flex-col">
                         <label>Description</label>
                         <textarea rows="4" name="description" id="description"
-                            placeholder="Product Description (400 chars. max)" class="input-field"></textarea>
+                            placeholder="Product Description (1000 chars. max)" class="input-field"></textarea>
                     </div>
 
                     <input type="submit" value="Submit" id="submitButton" class="submit-btn">

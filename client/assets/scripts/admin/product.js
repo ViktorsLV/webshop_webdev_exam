@@ -45,8 +45,28 @@ const showAlert = (msg, el) => {
   el.innerHTML = `${msg}`; // add text for alert
   setTimeout(function () {
     el.parentNode.removeChild(el); // remove alert from form after 5 seconds
-  }, 10000);
+  }, 5000);
 };
+
+function getAlert() {
+  if (localStorage.getItem("status") === 'success') {
+    alertSuccessSmall.style.display = "block"; // change alert visibility on HTML page
+    alertSuccessSmall.innerHTML = `Success!`;
+    setTimeout(function () {
+      alertSuccessSmall.parentNode.removeChild(alertSuccessSmall); // remove alert from form after 5 seconds
+    }, 3000);
+  }
+  else if (localStorage.getItem("status") === 'error') {
+    alertErrorSmall.style.display = "block"; // change alert visibility on HTML page
+    alertErrorSmall.innerHTML = `Error, try again later!`;
+    setTimeout(function () {
+      alertErrorSmall.parentNode.removeChild(alertErrorSmall); // remove alert from form after 5 seconds
+    }, 3000);
+  } else {
+    return
+  }
+  localStorage.removeItem("status");
+}
 
 const passAlert = (msg) => {
   localStorage.setItem('status', msg)
@@ -59,6 +79,7 @@ const reqHeaders = {
 }
 
 async function fetchProduct() {
+  loader.style.display = "block";
   try {
     const response = await fetch(`${baseUrl}/products/${productId}`, {
       method: "GET",
@@ -84,10 +105,18 @@ async function fetchProduct() {
             <div class="">${product.description}</div>
         </div>
     `;
+      pName.value = product.name 
+      brand.value = product.brand 
+      price.value = product.price 
+      category.value = product.category
+      stock.value = product.countInStock
+      // image.value = '/images/test.png'
+      description.value = product.description
     }
   } catch (error) {
     alert(error);
   }
+  loader.style.display = 'none'; 
 }
 
 async function deleteProduct(productId) {
@@ -129,13 +158,12 @@ async function editProduct(data) {
       showAlert(text, alertError);
       console.log(response.error)
     }
-    if (response.status === 201) {
+    if (response.status === 200) {
       const result = await response.json();
       console.log(result);
 
-      const text = "Product successfully created!";
-      showAlert(text, alertSuccessSmall);
-      console.log('XDD')
+      const text = "success";
+      passAlert(text)
       editProductModal.style.display = "none";
     }
     location.reload();
@@ -145,10 +173,6 @@ async function editProduct(data) {
     alert(error);
   }
 }
-
-// if (loading) {
-//   productDetails.innerHTML += `<h1>Loading data...</h1>`
-// }
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -172,6 +196,7 @@ submitButton.addEventListener('click', (e) => {
   }
 });
 
+/* delete modal */
 function openDeleteModal() {
   deleteModal.style.display = "block";
 }
@@ -188,11 +213,14 @@ span.onclick = function() {
   deleteModal.style.display = "none";
 }
 
-// window.onclick = function(event) {
-//   if (event.target == deleteModal) {
-//     deleteModal.style.display = "none";
-//   }
-// }
+/* edit modal */
+function openEditModal() {
+  editProductModal.style.display = "block";
+}
+
+function closeEditModal() {
+  editProductModal.style.display = "none";
+}
 
 window.onclick = function(event) {
   if (event.target == editProductModal) {
@@ -209,5 +237,7 @@ function checkPermissions() {
   }
 }
 
+
+getAlert();
 checkPermissions();
 fetchProduct();

@@ -43,13 +43,93 @@
         </nav>
 
         <div class="container">
+            <!-- DELETE ACCOUNT MODAL -->
+            <div id="deleteModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h5>Confirm delete?</h5>
+                    <p class="underline">It will NOT be possible to revert this action</p>
+                    <button class="confirm-btn" id="confirmDelete">DELETE ANYWAY</button>
+                </div>
+            </div>
+
+             <!-- ADD PRODUCT MODAL -->
+             <div id="editProductModal" class="modal addModal">
+
+                <form id="login-form" class="form-control">
+                    <div class="alert-success" id="alertSuccess"></div>
+                    <div class="alert-error" id="alertError"></div>
+
+                    <h4 class="heading-center">Add new product:</h4>
+
+                    <div class="form-grid">
+                        <div>
+                            <label>Name</label>
+                            <input type="text" name="name" id="name" placeholder="Product name" class="input-field">
+                        </div>
+
+                        <div>
+                            <label>Brand</label>
+                            <input type="text" name="brand" id="brand" placeholder="Product's Brand"
+                                class="input-field">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div>
+                            <label>Price</label>
+                            <input type="number" name="price" id="price" placeholder="Product Price ($)"
+                                class="input-field">
+                        </div>
+
+                        <div>
+                            <label>Category</label>
+                            <input type="text" name="category" id="category" placeholder="Product Category"
+                                class="input-field">
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+
+                        <div>
+                            <label>Stock</label>
+                            <input type="number" name="stock" id="stock" placeholder="Count in stock"
+                                class="input-field">
+                        </div>
+
+                        <div>
+                            <label>Image</label>
+                            <input type="file" name="image" id="image" placeholder="Image"
+                                accept="image/png, image/jpg">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label>Description</label>
+                        <textarea rows="4" name="description" id="description"
+                            placeholder="Product Description (400 chars. max)" class="input-field"></textarea>
+                    </div>
+
+                    <input type="submit" value="Submit" id="submitButton" class="submit-btn">
+                </form>
+            </div>
+
             <div class="alert-success alert-small" id="alertSuccess"></div>
             <div class="alert-warning alert-small" id="alertWarning"></div>
             <a href="./products.html" class="mt-2"><button class="mt-2 remove-btn"><i class="fas fa-long-arrow-alt-left"></i> BACK</button></a>
  
             <div class="product-grid" id="productBox">
 
+                <div>
+                    <button id="editProductBtn" class="edit-btn mb-2"><i class="fas fa-pen"></i> EDIT PRODUCT</button>
+                    <button id="deleteProductBtn" onclick="openDeleteModal()" class="trash details delete-btn"><i class="fas fa-trash-alt"></i> DELETE PRODUCT</button>
+                </div>
             </div>
+            
 
         </div>
     </section>

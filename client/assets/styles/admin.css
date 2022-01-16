@@ -72,3 +72,22 @@
 .alerts {
   width: 100%;
 }
+
+.delete-btn {
+  color: white;
+}
+
+.edit-btn {
+  color: #fff;
+  border: none;
+  background-color: var(--highlight);
+  padding: 3.5%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.edit-btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

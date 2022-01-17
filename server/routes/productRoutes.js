@@ -9,6 +9,8 @@ router.get("/", productController.getAllProducts);
 
 router.get("/:id", productController.getOneProduct);
 
+router.get("/count", productController.getProductsCount);
+
 router.delete("/:id", [auth, admin], productController.deleteProduct);
 
 router.put("/:id", [auth, admin], productController.editProduct);

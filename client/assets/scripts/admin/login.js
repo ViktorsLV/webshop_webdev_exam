@@ -35,11 +35,12 @@ async function loginAdmin(data) {
     if (response.status === 200) {
       const result = await response.json();
       const text = "Welcome!"
+
       if (result.isAdmin) {
         showAlert(text, alertSuccess)
         console.log(result)
         localStorage.setItem('token', result.token);
-        localStorage.setItem('permissions', result.isAdmin);
+        localStorage.setItem('permissions', result.isAdmin); /* TODO: fix this */
         console.log(result)
         // location.href = 'http://127.0.0.1:5500/client/assets/pages/admin/products.html';
         location.href = 'file:///C:/Users/sfs11/Desktop/Vik/Code/WEB%20EXAM/client/assets/pages/admin/products.html';

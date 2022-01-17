@@ -12,6 +12,17 @@ getAllProducts = async (req, res, next) => {
   }
 };
 
+// @route   GET /api/products/count
+// @access  Public 
+getProductsCount = async (req, res) => {
+  try {
+    const productsCount = await Product.countDocuments({}); // counts users in db 
+    res.status(200).json({count: productsCount});
+  } catch (err) {
+    res.status(404).send('No Products in DB')  
+  }
+};
+
 // @route   GET /api/products/:id
 // @access  Public
 getOneProduct = async (req, res) => {
@@ -109,5 +120,6 @@ module.exports = {
   deleteProduct,
   getOneProduct,
   createProduct,
-  editProduct
+  editProduct,
+  getProductsCount
 };

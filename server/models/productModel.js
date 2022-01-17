@@ -60,7 +60,7 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: 0
     },
-    status: {
+    active: {
       type: Boolean,
       required: true,
       default: false

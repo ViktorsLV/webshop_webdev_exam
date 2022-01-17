@@ -7,9 +7,15 @@ const productController = require('../controllers/productController')
 
 router.get("/", productController.getAllProducts);
 
-router.get("/:id", productController.getOneProduct);
-
 router.get("/count", productController.getProductsCount);
+
+router.get("/active", productController.getActiveProducts);
+
+router.get("/inactive", [auth, admin], productController.getInactiveProducts);
+
+router.post("/", [auth, admin], productController.createProduct); 
+
+router.get("/:id", productController.getOneProduct);
 
 router.delete("/:id", [auth, admin], productController.deleteProduct);
 
@@ -17,7 +23,6 @@ router.put("/:id", [auth, admin], productController.editProduct);
 
 router.put("/:id/status", [auth, admin], productController.changeProductStatus);
 
-router.post("/", [auth, admin], productController.createProduct); 
 
 
 module.exports = router

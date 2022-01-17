@@ -8,7 +8,8 @@ const productBox = document.querySelector("#productBox");
 
 async function fetchProducts() {
   try {
-    const response = await fetch(`${baseUrl}/products`, {
+    // fetching only active products
+    const response = await fetch(`${baseUrl}/products/active`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,8 +18,9 @@ async function fetchProducts() {
     });
     if (response.status >= 400) {
       const text = "Something went wrong";
+      alert(text)
       // console.log(response, text)
-      showAlert(text, alertError);
+      // showAlert(text, alertError);
     }
     if (response.status >= 200) {
       const result = await response.json();

@@ -122,7 +122,7 @@ const changeProductStatus = async (req, res) => {
     const product = await Product.findById(req.params.id);
   
     if (product) {
-      product.status = !product.status; // set product status to true or false
+      product.active = !product.active; // set product status to true or false
   
       const updatedProduct = await product.save();
   
@@ -135,6 +135,30 @@ const changeProductStatus = async (req, res) => {
   }
 };
 
+// @route   GET /api/products/active
+// @access  Public
+getActiveProducts = async (req, res, next) => {
+  try {
+    const products = await Product.find({active: true});
+    res.status(200).json(products);
+    if (!products) res.status(404).json("No active products found");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// @route   GET /api/products/inactive
+// @access  Private/Admin
+getInactiveProducts = async (req, res, next) => {
+  try {
+    const products = await Product.find({active: false});
+    res.status(200).json(products);
+    if (!products) res.status(404).json("No Inactive products found");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   getAllProducts,
   deleteProduct,
@@ -142,5 +166,7 @@ module.exports = {
   createProduct,
   editProduct,
   getProductsCount,
-  changeProductStatus
+  changeProductStatus,
+  getActiveProducts,
+  getInactiveProducts
 };

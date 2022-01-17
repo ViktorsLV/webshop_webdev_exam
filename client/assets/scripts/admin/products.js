@@ -150,6 +150,7 @@ async function getAllProducts() {
               <td>${product._id}</td>
               <td class="mobile-hide">${product.name.substring(0, 10)}</td>
               <td class="mobile-hide">$ ${product.price}</td>
+              <td class="mobile-hide">${product.active ? 'Yes' : 'No'}</td>
               <td class="button-detail">
                 <button onclick="openDeleteModal('${
                   product._id

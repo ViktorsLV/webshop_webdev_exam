@@ -78,17 +78,23 @@
   color: white;
 }
 
-.edit-btn {
+.edit-btn, .status-btn {
   color: #fff;
   border: none;
-  background-color: var(--highlight);
   padding: 3.5%;
   width: 100%;
   text-align: center;
   font-weight: bold;
 }
+.edit-btn {
+  background-color: var(--highlight);
 
-.edit-btn:hover {
+}
+.status-btn {
+  background-color: var(--btn-color);
+}
+
+.edit-btn:hover, .status-btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -96,4 +102,8 @@
 .product-form {
   height: min-content;
   overflow-y: auto;
+}
+
+.status-text {
+  color: white;
 }

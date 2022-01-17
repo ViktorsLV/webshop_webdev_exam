@@ -17,6 +17,8 @@ const productImg = document.querySelector("#productImg");
 const productName = document.querySelector("#productName");
 const productPrice = document.querySelector("#productPrice");
 const productBox = document.querySelector("#productBox");
+const statusProductText = document.querySelector("#statusProductText")
+const statusProductBtn = document.querySelector("#statusProductBtn")
 
 /* MODALS */
 const deleteProductBtn = document.querySelector("#deleteProductBtn")
@@ -93,6 +95,12 @@ async function fetchProduct() {
     if (response.status >= 200) {
       const product = await response.json();
       console.log(product);
+      if (product.active) {
+        statusProductText.innerHTML +=  'DEACTIVATE PRODUCT'
+      } else {
+        statusProductText.innerHTML +=  'ACTIVATE PRODUCT'
+      }
+      // (`${product.active}` === true) ?  : 
       productBox.innerHTML += `
         <div class="product-image">
           <img src="../../../../uploads/${product.image}" alt="${product.name}">
@@ -102,6 +110,7 @@ async function fetchProduct() {
             <h3 class="no-spacing">${product.name}</h3>
             <h4 class="no-spacing secondary">${product.brand}</h4>
             <h5 class="no-spacing secondary">In Stock: ${product.countInStock}</h5>
+            <h5 class="no-spacing secondary">Status: ${product.active ? "active" : "inactive"}</h5>
             <h5 class="price">$${product.price}</h5>
             <div class="">${product.description}</div>
         </div>
@@ -197,6 +206,36 @@ submitButton.addEventListener('click', (e) => {
     editProduct(data);
   }
 });
+
+statusProductBtn.addEventListener('click', (e) => {
+  changeStatus()
+})
+
+async function changeStatus() {
+  try {
+    const response = await fetch(`${baseUrl}/products/${productId}/status`, {
+      method: "PUT",
+      headers: reqHeaders ,
+    });
+    if (response.status >= 400) {
+      const text = "Something went wrong";
+      showAlert(text, alertError);
+      console.log(response.error)
+    }
+    if (response.status === 200) {
+      const result = await response.json();
+      console.log(result);
+
+      const text = "Successfully changed";
+      passAlert(text)
+      location.reload();
+    }
+  } catch (error) {
+    // handle server down error
+    console.log(error)
+    alert(error);
+  }
+}
 
 /* delete modal */
 function openDeleteModal() {

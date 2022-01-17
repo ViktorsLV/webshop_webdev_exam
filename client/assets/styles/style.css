@@ -392,7 +392,7 @@ div {
 .product {
   /* flex-grow: 1; */
   flex-basis: 20%;
-  max-height: 300px;
+  max-height: max-content;
   border: 1px solid var(--secondary-text);
   border-radius: 8px;
   padding: 2%;

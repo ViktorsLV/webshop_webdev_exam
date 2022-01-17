@@ -97,7 +97,7 @@ editProduct = async (req, res) => {
       (product.name = req.body.name || product.name),
         (product.price = req.body.price || product.price),
         (product.user = req.user._id),
-        (product.image = req.body.image || "/images/test.png"),
+        // (product.image = req.body.image || "/test.png"),
         (product.brand = req.body.brand || product.brand),
         (product.category = req.body.category || product.category),
         (product.countInStock = req.body.countInStock || product.countInStock),

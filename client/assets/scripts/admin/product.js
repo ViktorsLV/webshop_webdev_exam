@@ -200,7 +200,7 @@ submitButton.addEventListener('click', (e) => {
       price: price.value, 
       category: category.value, 
       countInStock: stock.value,
-      image: '/images/test.png',
+      // image: '/test.png',
       description: description.value
     }
     editProduct(data);

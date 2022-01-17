@@ -6,6 +6,7 @@ const permissions = localStorage.getItem("permissions");
 
 const productCell = document.querySelector("#productCell");
 const productDetails = document.querySelector("#productDetails");
+const totalProducts = document.querySelector("#totalProducts");
 
 /* MODALS */
 const confirmDelete = document.querySelector("#confirmDelete");
@@ -140,6 +141,7 @@ async function getAllProducts() {
       // 201 - created
       const result = await response.json();
       console.log(result);
+      totalProducts.innerHTML += `(${result.length})`
       if (result.length > 0) {
         result.reverse().forEach((product, index) => {
           productDetails.innerHTML += `

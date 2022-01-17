@@ -16,7 +16,7 @@ getAllProducts = async (req, res, next) => {
 // @access  Public 
 getProductsCount = async (req, res) => {
   try {
-    const productsCount = await Product.countDocuments({}); // counts users in db 
+    const productsCount = await Product.countDocuments({}); // counts products in db 
     res.status(200).json({count: productsCount});
   } catch (err) {
     res.status(404).send('No Products in DB')  
@@ -115,11 +115,32 @@ editProduct = async (req, res) => {
   }
 };
 
+// @route   PUT /api/products/:id/status
+// @access  Private/Admin
+const changeProductStatus = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+  
+    if (product) {
+      product.status = !product.status; // set product status to true or false
+  
+      const updatedProduct = await product.save();
+  
+      res.status(200).json(updatedProduct);
+    } else {
+      res.status(404).json("Product not found");
+    }
+  } catch (error) {
+    res.status(500).json("Something went wrong");    
+  }
+};
+
 module.exports = {
   getAllProducts,
   deleteProduct,
   getOneProduct,
   createProduct,
   editProduct,
-  getProductsCount
+  getProductsCount,
+  changeProductStatus
 };

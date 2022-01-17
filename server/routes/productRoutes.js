@@ -15,6 +15,8 @@ router.delete("/:id", [auth, admin], productController.deleteProduct);
 
 router.put("/:id", [auth, admin], productController.editProduct);
 
+router.put("/:id/status", [auth, admin], productController.changeProductStatus);
+
 router.post("/", [auth, admin], productController.createProduct); 
 
 
